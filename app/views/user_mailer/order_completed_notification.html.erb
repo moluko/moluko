@@ -1,0 +1,4 @@
+<p>Hello <%= @order.shop.user.name_or_email %>,</p>
+
+<p>You have received payment from <%= @order.payer_email %>.</p>
+<p>Please click this link (<%= sale_url(@order.position) %>) to see the details.</p>

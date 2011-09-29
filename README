@@ -1,0 +1,15 @@
+====================================================
+Setup Database Configuration in database.yml
+====================================================
+
+====================================================
+Setup Application Configuration in app_config.yml
+====================================================
+
+====================================================
+Install application
+====================================================
+bundle exec rake db:drop
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:install

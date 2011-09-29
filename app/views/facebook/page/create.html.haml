@@ -1,0 +1,19 @@
+%div
+  = hidden_field_tag :fb_app_id, @fb_app_id
+  = hidden_field_tag :fb_page_id, @fb_page_id
+  = hidden_field_tag :fb_user_id, @fb_user_id
+  = hidden_field_tag :fb_page_admin, @fb_page_admin
+  = hidden_field_tag :fb_page_liked, @fb_page_liked
+  = hidden_field_tag :current_category_id, '0'
+  = hidden_field_tag :current_product_id, '0'
+  = hidden_field_tag :current_categories_page, '1'
+  = hidden_field_tag :current_products_page, '1'
+
+- if @shop.products.where('enable_buy = ?', '1').size > 0
+  #moluko_cart
+    .cart-header
+      %a{ :href => '#', :onclick => 'show_cart();' } Show Shopping Cart
+
+#moluko_content
+  = raw liquidize( @page, { 'data' => @data } )
+#dialog_container

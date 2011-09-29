@@ -1,0 +1,55 @@
+- content_for :title do
+  Moluko - Sales - [PRODUCT NAME]
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Report
+    %li &raquo;
+    %li= link_to "Sales", orders_path
+    %li &raquo;
+    %li [SALES ID]
+
+.content
+  %h2 Sales Details
+  %p
+    %b Id:
+    AE91-1231-3ASD-121F
+  %p
+    %b Purchased Datetime:
+    12 September 2010, 10:50 pm [convert to the user local based on profile setting]
+  %p
+    %b Purchased Datetime (UTC version):
+    12 September 2010, 10:50 UTC [set your timezone here]
+
+  %p
+    %b Product Title:
+    Gundam Toy Full Scale
+  %p
+    %b Color:
+    Red
+  %p
+    %b Scale:
+    Full
+  %p
+    %b Quantity:
+    1
+  %p
+    %b Paid Amount:
+    AU $1231
+  %p
+    %b Shipped To:
+    %br/
+    Unit 149 / 298 - 304 Sussex St
+    %br/
+    Sydney
+    %br/
+    NSW - Australia 2000
+  %p
+    %b Buyer Email:
+    hendro@blindoptimists.com
+  %p
+    %b Paypal Transaction Id:
+    AEA12-1231231
+  = link_to "Back", orders_path, :class => "button"

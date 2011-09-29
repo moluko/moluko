@@ -1,0 +1,36 @@
+- content_for :title do
+  Moluko - Theme Settings
+
+- content_for :body_bottom do
+  :javascript
+    $('#panel-theme').addClass('active');
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Store
+    %li &raquo;
+    %li Theme
+
+#content
+  .page-title
+    %h1.theme Theme Settings
+  = render 'layouts/messages'
+
+  - unless @shop.nil?
+    .content-actions
+      %h3{:style => "margin: 10px 0;"}
+        Current theme
+      = @shop.theme_name
+      %h3{:style => "margin: 10px 0;"}
+        Choose your theme
+      - @themes.each do |theme|
+        - div_for theme, :style => "margin: 10px 0;" do
+          = theme.name
+          = link_to "preview", theme_setting_path(theme.id)
+          = link_to "use this", change_theme_settings_path(:id => theme.id)
+      Custom Design
+      = link_to "preview", theme_setting_path(0)
+      = link_to "use this", change_theme_settings_path(:id => 0)
+      = link_to "edit custom design", edit_theme_setting_path(@shop)

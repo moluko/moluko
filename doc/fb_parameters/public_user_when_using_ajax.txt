@@ -1,0 +1,16 @@
+Parameters: {
+"fb_sig_app_id"=>"195708459256", 
+"action"=>"show_page", 
+"page_id"=>"2", 
+"fb_sig_locale"=>"en_US", 
+"fb_sig_in_new_facebook"=>"1", 
+"fb_sig"=>"d690b2ea17bb624c6566ecda9733e34a", 
+"fb_sig_logged_out_facebook"=>"1", 
+"fb_sig_profile"=>"238502048416", 
+"fb_sig_added"=>"0", 
+"fb_sig_country"=>"id", 
+"controller"=>"facebook_pages", 
+"fb_sig_is_ajax"=>"1", 
+"fb_sig_api_key"=>"876efe1f373a78a2ba886ebe9e60bdd3", 
+"fb_sig_time"=>"1280380988.891"
+}

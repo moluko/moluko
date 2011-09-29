@@ -1,0 +1,29 @@
+- content_for :title do
+  Moluko - User Profile
+
+- content_for :body_bottom do
+  :javascript
+    $(":input:visible:enabled:first").focus();
+
+.content
+  %h2 User Profile
+
+  = form_for current_user do |f|
+    = f.label :first_name, "First name:"
+    = f.text_field :first_name, :class => "small-input"
+
+    = f.label :last_name, "Last name:"
+    = f.text_field :last_name, :class => "small-input"
+
+    = f.label :email, "Login (email):"
+    = f.text_field :email, :class => "small-input"
+
+    = f.label :timezone, "Timezone:"
+    = f.time_zone_select :time_zone, nil, {}, :class => "small-input"
+
+    %div{ :style => "clear: both;" }
+    = link_to_function 'Save', "$(this).parent().submit()", :class => "button"
+    - unless flash[:error].nil?
+      .info.error= flash[:error]
+    - unless flash[:info].nil?
+      .info.success= flash[:info]

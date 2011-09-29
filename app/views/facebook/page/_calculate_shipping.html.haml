@@ -1,0 +1,12 @@
+%br/
+%h2
+  Total weight:
+  = @total_weight
+%br/
+%h2
+  - if @cart.shipping_fee.nil?
+    Sorry, shipping is not available for your location.
+  - else
+    Shipping fee:
+    = @cart.shop.paypal_currency_symbol
+    = price_format @cart.shipping_fee

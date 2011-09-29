@@ -1,0 +1,280 @@
+<div id="container" class="container">
+  <div class="greybox">
+    <div class="float-left">Categories</div>
+    <div class="float-right">
+      <a href="http://moluko.com" class = "powered-by" target = "blank">Powered by Moluko</a>
+    </div>
+  </div>
+  <div class="categories">
+    {% if data['current_category_id'] != '0' %}
+      <div class="category">
+        <a onclick="link_to_page('storefront', { 'category_id' : 0 }); return false">All Products</a>
+      </div>
+    {% endif %}
+    {% for category in data['categories'] %}
+      {% if data['current_category'].id != category.id %}
+        <div class="category">
+          <a onclick="link_to_page('storefront', { 'category_id' : {{ category.id }} }); return false">{{ category.name }}</a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="greybox">
+    <div class="float-left">
+      {% if data['current_category'] == nil %}
+        All Product(s)
+      {% else %}
+        {{ data['current_category'].name }}
+      {% endif %}
+      -
+      {{ data['products_size'] }} items
+      -
+      {% for link_number in data['products_pagination_range'] %}
+        {% if link_number == data['current_products_page'] %}
+          {{ link_number }}
+        {% else %}
+          <a onclick="link_to_page('storefront', {'products_page' : {{ link_number }} }); return false;">
+            {{ link_number }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div>
+      {% if data['current_products_page'] != data['products_page_size'] %}
+      <a onclick="link_to_page('storefront', {'products_page' : {{ data['current_products_page'] }} + 1 }); return false;" class = "nav-link next"></a>
+      {% endif %}
+      {% if data['current_products_page'] != '1' %}
+      <a onclick="link_to_page('storefront', {'products_page' : {{ data['current_products_page'] }} - 1 }); return false;" class = "nav-link prev"></a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="products">
+    {% for product in data['products'] %}
+      <div class="product">
+        <div class="description">
+          <a onclick="link_to_page('product', { 'product_id' : {{ product.id }}}, 'container' ); return false;">
+            <div class="title">{{ product.title }}</div>
+            <div class="price">
+              {% if product.discount_status == '1' %}
+                <span class="override_price">{{ data['currency_symbol'] }} {{ product.price | currency_format }}</span>
+                <span class="discount_price">{{ data['currency_symbol'] }} {{ product.discount_price | currency_format }}</span>
+              {% else %}
+                <div class="normal_price">{{ data['currency_symbol'] }} {{ product.price | currency_format }}</div>
+              {% endif %}
+            </div>
+          </a>
+        </div>
+        <div class="image">
+          <a onclick="link_to_page('product', { 'product_id' : {{ product.id }}}, 'container' ); return false;">
+            {% if product.images.first != nil %}
+              <img src='{{ product.images.first.medium }}88' />
+            {% endif %}
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+ 
+<style>
+/* GENERAL */
+.container
+{
+  width: 500px;
+  clear: both;
+  font-family: "lucida grande", tahoma, verdana;
+  margin-left: 5px;
+}
+a
+{
+  text-decoration: none;
+  color: #3b5998;
+  cursor: pointer;
+}
+a:hover
+{
+  text-decoration: underline;
+}
+.powered-by
+{
+  font-size: 11px;
+}
+.float-left
+{
+  float: left;
+}
+.float-right
+{
+  float: right;
+}
+
+/* FRONT PAGE */
+.greybox
+{
+  width: 500px;
+  height: 20px;
+  background-color: #f7f7f7;
+  clear: left;
+  color: #333;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 7px 5px;
+}
+.categories
+{
+  width: 500px;
+}
+.category
+{
+  padding: 10px;
+  float: left;
+}
+.category a
+{
+  font-weight: bold;
+  font-size: 11px;
+}
+.products
+{
+  width: 500px;
+  height: 650px;
+  margin-left: 5px;
+}
+.product
+{
+  float: left;
+  height: 300px;
+  margin: 5px 5px 0px 0;
+  text-align: center;
+  width: 230px;
+  border: 1px solid #aaa;
+  padding: 5px;
+  overflow: hidden;
+}
+.product a
+{
+  font-size: 11px;
+  font-weight: bold;
+}
+.product .override_price
+{
+  text-decoration: line-through;
+}
+.product .discount_price
+{
+  margin-bottom: 10px;
+  color: #f00;
+}
+.product .description
+{
+  height: 60px;
+}
+.product .price
+{
+  text-align: center;
+}
+.product .image
+{
+  height: 200px;
+  overflow: hidden;
+  width: 230px;
+  text-align: center;
+}
+.nav-link
+{
+  background-image: url({{ data['domain_name'] }}/images/facebook/nav-arrow.png);
+  background-repeat: no-repeat;
+  float: right;
+  height: 22px;
+  width: 25px;
+}
+.next
+{
+  background-position: 0 -23px;
+}
+.prev
+{
+  background-position: 0 -69px;
+}
+
+/* PRODUCT PAGE */
+.product-header h2
+{
+  font-size: 14px;
+  padding: 0 0 6px;
+}
+.product-images
+{
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #bbb;
+  border-top: 1px solid #bbb;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  padding: 10px 0;
+  text-align: center;
+}
+.product-images img
+{
+  border: 1px solid #bbb;
+}
+.product-images div.normal
+{
+  display: none;
+}
+.product-images div.thumbnail
+{
+  cursor: pointer;
+  margin-top: 10px;
+}
+.product-description
+{
+  margin: 5px 0 10px;
+  min-height: 120px;
+}
+.product-description .price
+{
+  color: #333;
+  font-size: 15px;
+  font-weight: bold;
+}
+.product-description .override_price
+{
+  color: #333;
+  font-size: 15px;
+  text-decoration: line-through;
+  font-weight: bold;
+}
+.product-description .discount_price
+{
+  color: #f00;
+  font-size: 15px;
+  font-weight: bold;
+}
+.action-button
+{
+  float: right;
+  margin-top: 20px;
+}
+.visit-button, .buy-button
+{
+  display: inline-block;
+}
+.visit-button a, .buy-button input
+{
+  cursor: pointer;
+  font-size: 17px;
+  padding: 15px 35px;
+  background-color: #3B5998;
+  border: none;
+  color: #fff;
+  text-align: center;
+}
+.buy-button input:hover
+{
+  text-decoration: underline;
+}
+.visit-button a
+{
+  padding: 15px 15px 16px;
+}
+</style>

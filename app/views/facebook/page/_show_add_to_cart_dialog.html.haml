@@ -1,0 +1,16 @@
+#add_to_cart
+  .left
+    = image_tag @product.images.first.data.url(:medium) unless @product.images.first.nil?
+  .right
+    %h1
+      = @product.title_with_specifications
+    %br/
+    %h2
+      = @product.shop.paypal_currency_symbol
+      = price_format @product.final_price
+    %hr/
+    = label_tag :quantity, 'Quantity:'
+    .moluko-text
+      = text_field_tag :quantity, '1', :style => 'width: 50px; text-align: center;'
+    .moluko-button
+      %input{ :type => 'submit', :value => 'Add to cart', :onclick => "add_to_cart('#{@product.id}', $('#quantity').val()); return false;" }

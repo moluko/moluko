@@ -1,0 +1,38 @@
+- content_for :title do
+  Moluko - Manage Product Categories
+
+- content_for :head_bottom do
+  = javascript_include_tag "jquery.tablednd_0_5"
+
+- content_for :body_bottom do
+  = javascript_tag do
+    = reordering_js 'categories'
+    - @categories.each do |category|
+      $('#category_#{category.id}_name').click(function(){ location.href = '#{edit_category_path(category)}'; });
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Catalogue
+    %li &raquo;
+    %li Category
+
+.content
+  %h2 Manage Your Categories for Product
+  = link_to "+ Add New Category", new_category_path, :class => "button"
+  %div{:style => "clear: both;"}
+
+  - if @categories.count > 0
+    %table.global
+      %thead
+        %tr
+          %th{:width => "300"} Category Name
+          %th Delete
+          %th Reorder
+      %tbody{:id => "categories"}
+        - @categories.each do |category|
+          %tr{:id => "category-#{category.id}", :style => "cursor: pointer;"}
+            %td{:id => "category_#{category.id}_name", :width => "300"}=  link_to h(category.name), edit_category_path(category)
+            %td= link_to image_tag("/images/admin/action_delete.gif", :alt => "Delete this product"), category, :alt => "Delete this product", :method => :delete, :confirm => "Are you sure you want to delete this category?"
+            %td{:class => "draghandle"}= link_to image_tag("/images/drag.gif", :alt => "Reorder this product"), "javascript:none", :alt => "Reorder this product"

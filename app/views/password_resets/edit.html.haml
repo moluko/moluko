@@ -1,0 +1,38 @@
+- content_for :title do
+  Moluko - Change Password
+- content_for :body_bottom do
+  :javascript
+    $('input:text:first').focus();
+    $('input').keypress(function(e){
+      if (e.which == 13) {
+        e.preventDefault();
+        $('form').submit();
+      }
+    });
+#signup
+  .side-action
+    %p
+      Already registered?
+      = link_to "Login now", login_path
+    %p
+      Got any questions? email
+      = mail_to "questions@moluko.com", "questions@moluko.com", :encode => "hex"
+  .content{:style => "padding: 15px 30px"}
+    %h1 Change Your Password
+    = form_for @user, :url => password_reset_path, :method => :put do |f|
+      %ol
+        %li
+          = f.label :email
+          = @user.email
+        %li
+          = f.label :password
+          = f.password_field :password
+        %li
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+        %li
+          = link_to_function "Update", "$(this).closest('form').submit()", :class => "small-button"
+        - unless flash[:error].nil?
+          .info.error= flash[:error]
+        - unless flash[:info].nil?
+          .info.success= flash[:info]

@@ -1,0 +1,145 @@
+- content_for :head_bottom do
+  = javascript_include_tag 'tiny_mce/jquery.tinymce.js'
+
+- content_for :body_bottom do
+  :javascript
+    $(function(){
+      $('textarea.tinymce').tinymce({
+        script_url : "/javascripts/tiny_mce/tiny_mce.js",
+        content_css : "/stylesheets/tinymce_content.css",
+        theme : "advanced",
+        plugins : "tabfocus",
+        theme_advanced_buttons1 : "bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright, justifyfull,bullist,numlist,undo,redo",
+        theme_advanced_buttons2 : "",
+        theme_advanced_buttons3 : "",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        width: 600,
+        height: 400,
+        tab_focus  : ":prev,:next"
+      });
+
+      $(":input:visible:enabled:first").focus();
+
+      $(".accordion h3").click(function(){
+        $(".parent").toggle();
+      });
+      //discount event
+      if(!$('#product_discount_status').attr('checked')) $('#discount_price_block').hide();
+      $('#product_discount_status').click(function(){ $('#discount_price_block').slideToggle(); });
+      $('#product_discount_price').keyup(function(){
+        var price = $('#product_price').val();
+        var discount_price = $('#product_discount_price').val();
+        if (discount_price > price)
+          var discount_percentage = 0;
+        else
+          var discount_percentage = (1 - discount_price / price ) * 100;
+        $('#discount_percentage').html(discount_percentage.toFixed(2) + '%');
+      });
+      //enable visit url event
+      $('#product_enable_visit_1').click(function(){ $('#visit_url').show(); });
+      $('#product_enable_visit_0').click(function(){ $('#visit_url').hide(); });
+      if($('#product_enable_visit_0').attr('checked')) $('#visit_url').hide();
+
+      $('#product_free_shipping_1').click(function(){ $('#free_shipping_tip').hide(); });
+      $('#product_free_shipping_0').click(function(){ $('#free_shipping_tip').show(); });
+      if($('#product_free_shipping_1').attr('checked')) $('#free_shipping_tip').hide();
+
+
+    });
+
+= form_for @product, :html => { :multipart => true } do |f|
+  %div{:style => "clear: left"}
+  - unless flash[:error].nil?
+    .info.error= flash[:error]
+  = f.label :title, "Title:"
+  = f.text_field :title, :class => "small-input"
+
+  = f.label :description, "Description:"
+  = f.text_area :description, :class => "tinymce"
+
+  = f.label :weight, "Weight:"
+  = f.text_field :weight, :class => "small-input"
+  %p{:style => "font-size: 70%; font-style: italic"} Tip: number only in kg - without kg symbol (e.g. 0.8)
+
+  = f.label :price, "Price:"
+  = f.text_field :price, :class => "small-input"
+  = f.check_box :discount_status
+  put this product under discounted price
+  %p{:style => "font-size: 70%; font-style: italic"} Tip: number only - without currency symbol (e.g. 19.95)
+
+  #discount_price_block
+    = f.label :discount_price, "Discounted Price:"
+    = f.text_field :discount_price, :class => "small-input"
+    %span{:id => "discount_percentage"}
+      = "#{number_to_percentage(@product.discount_percentage, :precision => 2)}"
+    off
+    =# f.check_box :discount_for_fan_status
+    =# just for facebook fan
+
+  - if @categories.size > 0
+    = f.label :category_id, "Category:"
+    = f.select :category_id, @categories.collect{|category| [category.name, category.id] }, { :include_blank => true }, :class => "small-input"
+
+  = f.label "Image(s) - 450px X 450px:"
+  = f.fields_for :images do |builder|
+    = render 'image_fields', :f => builder
+  .addfield
+    = link_to_add_fields "+ add more image", f, :images
+
+  %br/
+  .accordion
+    %ul
+      %li{:style => "width: 600px"}
+        %h3=link_to "» Advanced Settings (optional)", "javascript:none"
+        .parent
+          %div
+            = f.label :sku, "Product SKU:"
+            = f.text_field :sku, :class => "small-input"
+          - if current_user.id == 89 #hacked for piazza loredana
+            %div
+              = f.label :group_specification, "Group By:"
+              = f.text_field :group_specification, :class => "small-input"
+          %div
+            = f.label "Add custom product attribute(s):"
+            = f.fields_for :specifications do |builder|
+              = render 'specification_fields', :f => builder
+            .addfield
+              = link_to_add_fields "+ add new attribute", f, :specifications
+
+          %div{ :style => "clear: left;" }
+
+          %div
+            = f.label :free_shipping, "Free shipping:"
+            = f.radio_button :free_shipping, "1", :style => "float: left"
+            %p{:style => "float: left"} Yes
+            = f.radio_button :free_shipping, "0", :style => "float: left; padding-left: 10px"
+            %p{:style => "float: left"} No
+            %p{:id => "free_shipping_tip", :style => "clear: both; font-size: 70%; font-style: italic"} Tip: Go to Shipping Rates to specify the cost of shipping
+
+          %div{ :style => "clear: left;" }
+
+          %div
+            = f.label :enable_buy, "Enable in-store transaction (show 'Buy It Now!' button):"
+            = f.radio_button :enable_buy, "1", :style => "float: left"
+            %p{:style => "float: left"} Yes
+            = f.radio_button :enable_buy, "0", :style => "float: left; padding-left: 10px"
+            %p{:style => "float: left"} No
+
+          %div{ :style => "clear: left;" }
+
+          %div
+            = f.label :enable_visit, "Enable link to external url (show 'Visit Store' button):"
+            = f.radio_button :enable_visit, "1", :style => "float: left"
+            %p{:style => "float: left"} Yes
+            = f.radio_button :enable_visit, "0", :style => "float: left; padding-left: 10px"
+            %p{:style => "float: left"} No
+            %p{:style => "clear: left"}
+              #visit_url
+                URL:
+                = f.text_field :url_to_product, :class => "small-input"
+
+  %div{ :style => "clear: both;" }
+  = link_to_function button_title, "$(this).closest('form').submit()", :class => "button"
+  = link_to "Cancel", products_path, :class => "button"

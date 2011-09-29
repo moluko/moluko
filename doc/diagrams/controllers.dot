@@ -1,0 +1,7 @@
+digraph controllers_diagram {
+	graph[overlap=false, splines=true]
+	"ApplicationController" [shape=Mrecord, label="{ApplicationController|\l|login_required\l|current_user\lcurrent_user_session\llogged_in?\l}"]
+	"PagesController" [shape=Mrecord, label="{PagesController|dashboard\lhome\l|\l|\l}"]
+	"UsersController" [shape=Mrecord, label="{UsersController|create\lnew\l|\l|\l}"]
+	"UserSessionsController" [shape=Mrecord, label="{UserSessionsController|create\ldestroy\lnew\l|\l|\l}"]
+}

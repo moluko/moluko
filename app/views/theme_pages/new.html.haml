@@ -1,0 +1,20 @@
+- content_for :title do
+  Moluko - Create new page
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to "Predefined Theme", themes_path
+    %li &raquo;
+    %li
+      = @theme_page.theme.name
+      theme
+    %li &raquo;
+    %li= link_to "Pages", @theme_page.theme
+    %li &raquo;
+    %li Add New Page
+
+.content
+  %h2 Add New Page
+  = render "form", :button_title => "Save"

@@ -1,0 +1,20 @@
+wrangler_blue_product:
+  title: Wrangler Blue
+  price: 12
+  shop: fashion_shop
+  feed_source: 0
+  category: tshirt_category
+
+jazzy_big_hat_product:
+  title: Jazzy Big Hat
+  price: 34
+  shop: fashion_shop
+  feed_source: 0
+  category: hat_category
+
+lee_cooper_baggy_product:
+  title: Baggy Lee Cooper
+  price: 56
+  shop: fashion_shop
+  feed_source: 0
+  category: pants_category

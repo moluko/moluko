@@ -1,0 +1,11 @@
+.fields
+  .attribute-key
+    -#
+      = f.label :content, "Attribute name (e.g. Size):"
+      = f.text_field :content
+    = f.label :key, "Attribute name (e.g. Size):"
+    = f.text_field :key
+    = f.label :value, "Value (e.g. XL):"
+    = f.text_field :value
+    = link_to_remove_fields image_tag("/images/admin/action_delete.gif"), f
+  %div{:style => "clear: both;"}

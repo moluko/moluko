@@ -1,0 +1,4 @@
+if ($('#fb_user_id').val() == '')
+  authenticate_user();
+else
+  $('#dialog_container').html('<%= escape_javascript render( :partial => 'show_add_to_cart_dialog' ) %>');

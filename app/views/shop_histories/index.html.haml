@@ -1,0 +1,42 @@
+- content_for :title do
+  Moluko - Shop Histories
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to 'Dashboard', dashboard_path
+    %li &raquo;
+    %li
+      = @shop.name
+      histories
+
+.content
+  %h2
+    = link_to @shop.user.email, user_user_histories_path(@shop.user)
+    = "(#{@shop.user.id})"
+    = @shop.name
+    = "(#{@shop.id})"
+    = link_to @shop.fb_ids, @shop.fb_ids_url, :target => '_blank'
+  = page_entries_info @shop_histories
+  %br/
+  %br/
+  = will_paginate @shop_histories
+  %br/
+  %table.global
+    %thead
+      %tr
+        %th Date
+        %th Controller
+        %th Action
+        %th Params
+    %tbody
+      - @shop_histories.each do |shop_history|
+        %tr
+          %td= shop_history.created_at.to_s(:long)
+          %td= shop_history.controller
+          %td= shop_history.action
+          %td= h shop_history.params
+  %br/
+  = will_paginate @shop_histories
+  %br/

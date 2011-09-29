@@ -1,0 +1,5 @@
+$('#<%= @replace_tag %>').html('<%= escape_javascript raw( liquidize( @page, { 'data' => @data } ) ) %>');
+$('#current_category_id').val('<%= @data['current_category_id'] %>');
+$('#current_product_id').val('<%= @data['current_product_id'] %>');
+$('#current_products_page').val('<%= @data['current_products_page'] %>');
+$('#current_categories_page').val('<%= @data['current_categories_page'] %>');

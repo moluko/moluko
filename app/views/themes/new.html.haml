@@ -1,0 +1,14 @@
+- content_for :title do
+  Moluko - Administrator - Add New Theme
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to "Predefined Theme", themes_path
+    %li &raquo;
+    %li Add New Predefined Theme
+
+.content
+  %h2 Add New Predefined Theme
+  = render "form", :button_title => "Save"

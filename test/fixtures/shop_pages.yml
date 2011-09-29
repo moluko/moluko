@@ -1,0 +1,9 @@
+register_user_shop_1_shop_page_1:
+  shop: register_user_shop_1
+  name: Shop Page Name 1
+  content: Shop Page Content 1
+
+register_user_shop_1_shop_page_2:
+  shop: register_user_shop_1
+  name: Shop Page Name 2
+  content: Shop Page Content 2

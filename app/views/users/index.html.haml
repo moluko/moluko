@@ -1,0 +1,23 @@
+- content_for :title do
+  Moluko - Admin
+
+.breadcrumb
+  %ul
+    %li User Management
+
+.content
+  %h2 Admin - Manage Your User(s)
+  = link_to "+ Add New User", new_user_path, :class => "button"
+
+  %div{:style => "clear: both;"}
+
+  %table.global
+    %thead
+      %tr
+        %th Email
+        %th Role
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.email
+          %td= user.roles.join(', ')

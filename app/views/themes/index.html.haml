@@ -1,0 +1,50 @@
+- content_for :title do
+  Moluko - Administrator - Manage Predefined Theme(s)
+
+- content_for :head_bottom do
+  = javascript_include_tag "jquery.tablednd_0_5"
+
+- content_for :body_bottom do
+  - javascript_tag do
+    - @themes.each do |theme|
+      $('#theme_#{theme.id}_title').click(function(){
+      location.href = '#{edit_theme_path(theme)}';
+      });
+      $('#theme_#{theme.id}_price').click(function(){
+      location.href = '#{edit_theme_path(theme)}';
+      });
+      $('#theme_#{theme.id}_category').click(function(){
+      location.href = '#{edit_theme_path(theme)}';
+      });
+    $('#themes tr').hover(function(){
+    $(this.cells[0]).addClass('showdraghandle');
+    }, function(){
+    $(this.cells[0]).removeClass('showdraghandle');
+    });
+    = reordering_js 'themes'
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to 'Predefined Theme', themes_path
+
+.content
+  %h2 Predefined Theme
+  = link_to "+ Add New Theme", new_theme_path, :class => "button"
+
+  %div{:style => "clear: both;"}
+  %table.global
+    %thead
+      %tr
+        %th{:width => "20", :style => "border: none; background-color: transparent;"}
+        %th Theme Name
+        %th # of pages
+    %tbody{:id => "themes"}
+      - @themes.each do |theme|
+        %tr{:id => "theme-#{theme.id}", :style => "cursor: pointer;"}
+          %td{:class => "draghandle", :style => "border: none; width: 20px;"}
+            &nbsp;
+          %td{:id => "theme_#{theme.id}_title"}= h theme.name
+          %td= h theme.theme_pages.size
+          %td= link_to "show pages", theme

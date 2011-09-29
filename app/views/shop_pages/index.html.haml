@@ -1,0 +1,26 @@
+- content_for :title do
+  Moluko - Custom Theme
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Store
+    %li &raquo;
+    %li=link_to 'Theme', themes_shop_path(current_shop)
+    %li &raquo;
+    %li Customized Theme
+
+.content
+  %h2 Custom Theme Pages
+  = link_to "+ Add New Page", new_shop_page_path, :class => "button"
+  %table.global
+    %thead
+      %tr
+        %th Page Id.
+        %th Page Name
+    %tbody
+    - @shop_pages.each do |shop_page|
+      %tr
+        %td= shop_page.id
+        %td= link_to shop_page.name, edit_shop_page_path(shop_page)

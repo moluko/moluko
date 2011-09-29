@@ -1,0 +1,111 @@
+<div class="navigation">
+  <div class="previous">
+    {% if data['current_products_page'] != '1' %}
+    <a onclick="link_to_page('storefront', {'products_page' : {{ data['current_products_page'] }} - 1 }); return false;"></a>
+    {% endif %}
+  </div>
+  <div class="item">
+    <div>
+      {{ data['current_category'].name }}
+      <span class="blue">{{ data['products_size'] }}</span>
+      item(s)
+    </div>
+    <div class="pipeline"></div>
+    <div>
+      <span class="page">PAGE</span>
+      {% for link_number in data['products_pagination_range'] %}
+        {% if link_number == data['current_products_page'] %}
+          <a class="blue" onclick="link_to_page('storefront', {'products_page' : {{ link_number }} }); return false;">
+            {{ link_number }}
+          </a>
+        {% else %}
+          <a onclick="link_to_page('storefront', {'products_page' : {{ link_number }} }); return false;">
+            {{ link_number }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="next">
+    {% if data['current_products_page'] != data['products_page_size'] %}
+    <a onclick="link_to_page('storefront', {'products_page' : {{ data['current_products_page'] }} + 1 }); return false;"></a>
+    {% endif %}
+  </div>
+  <div class="backto">
+    <a onclick="link_to_page('storefront', {}); return false;">Back to Store Front</a>
+  </div>
+</div>
+<div>
+  <div class = "product-description">
+    <div class = "title">
+      {{ data['current_product'].title }}
+    </div>
+    <div class = "price">
+      <div class="button left"></div>
+      <div class="button leftmiddle">
+        {% if data['current_product'].discount_status == '1' %}
+          <div class="override_price">{{ data['currency_symbol'] }} <span>{{ data['current_product'].price | currency_format }}</span></div>
+          <div class="discount_price">{{ data['currency_symbol'] }} <span>{{ data['current_product'].discount_price | currency_format }}</span></div>
+        {% else %}
+          <div class="normal_price">{{ data['currency_symbol'] }} <span>{{ data['current_product'].price | currency_format }}</span></div>
+        {% endif %}
+      </div>
+      <div class="button middle"></div>
+      <div class="button rightmiddle">
+        {{ data['current_product'] | buy_button }}
+        {{ data['current_product'] | visit_button }}
+      </div>
+      <div class="button right"></div>
+    </div>
+    <div class = "description">
+      <p>{{ data['current_product'].description }}</p>
+      {% for specification in data['current_product'].specifications %}
+        {{ specification.key }}: {{ specification.value }}
+        <br />
+      {% endfor %}
+      {% if data['current_product_variant'] != nil %}
+        <p>
+          <select id="product_variant" onchange="link_to_page('product', { 'product_id' : document.getElementById('product_variant').getValue() }, 'products_tag' ); return false;">
+              <option>Related product</option>
+          {% for product in data['current_product_variant'] %}
+              <option value={{ product.id }}>
+                {{ product.specifications_string }}
+              </option>
+          {% endfor %}
+          </select>
+        </p>
+      {% endif %}
+    </div>
+    {% if data['current_product'].images.size > 1 %}
+      <div class="thumbs">
+        {% for image in data['current_product'].images %}
+          <div class="thumb">
+            <img src='{{ image.thumb }}' onclick="display_photo({{ image.id }});"/>
+          </div>
+        {% endfor %}
+       </div>
+     {% endif %}
+  </div>
+  <div style="clear: both;"></div>
+  <div class="product-images">
+    {% for image in data['current_product'].images %}
+      <div class="product-normal" id="image_{{ image.id }}" style="display: none;">
+        <img src='{{ image.normal }}' />
+      </div>
+    {% endfor %}
+  </div>
+  <div style="clear: both;"></div>
+</div>
+<script>
+$('#image_{{ data['current_product'].images.first.id }}').css("display", "block");
+function display_photo(id)
+{
+  var photos = [];
+  {% for image in data['current_product'].images %}
+    photos.push({{ image.id }});
+  {% endfor %}
+  for ( var i = 0; i < photos.length; ++i )
+    $("#image_" + photos[i]).css("display", "none");
+  $("#image_" + id).css("display", "block");
+}
+</script>

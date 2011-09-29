@@ -1,0 +1,29 @@
+- content_for :title do
+  Moluko - Reset Password
+- content_for :body_bottom do
+  :javascript
+    $('input:text:first').focus();
+    $('input').keypress(function(e){
+      if (e.which == 13) {
+        e.preventDefault();
+        $('form').submit();
+      }
+    });
+#login
+  .side-action
+  .content{:style => "padding: 15px 30px"}
+    %h1 Reset Password
+    %h4 Fill out your email below and we will send you an instruction to reset your password.
+    = form_tag password_resets_path do
+      %ol
+        %li
+          = label_tag :email
+          = text_field_tag :email
+        %li
+          = link_to_function "Reset", "$(this).closest('form').submit()", :class => "small-button"
+        %li
+          = link_to 'back to login page', login_path
+      - unless flash[:error].nil?
+        .info.error= flash[:error]
+      - unless flash[:info].nil?
+        .info.success= flash[:info]

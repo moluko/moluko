@@ -1,0 +1,30 @@
+<% dt = DateTime.now %>
+<% dt1 = dt - 2.months %>
+<% dt2 = dt - 1.months %>
+<% dt3 = dt %>
+fashion_shop:
+  name: Shop for latest fashion
+  fb_ids: 123
+  fb_type: 1
+  position: 1
+  paypal_email: fashion@moluko.com
+  activation_key: fashion_shop
+  user: end_user
+
+mobile_shop:
+  name: Latest mobile accessories
+  fb_ids: 456
+  fb_type: 2
+  position: 2
+  paypal_email: mobile@moluko.com
+  activation_key: mobile_shop
+  user: end_user
+
+management_shop:
+  name: Admin User Shop 1
+  fb_ids: 789
+  fb_type: 2
+  position: 1
+  paypal_email: admin@moluko.com
+  activation_key: management_shop
+  user: admin_user

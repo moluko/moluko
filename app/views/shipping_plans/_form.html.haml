@@ -1,0 +1,22 @@
+= form_for @shipping_plan do |f|
+  = f.label :country, "Country:"
+  = f.text_field :country, :class => "small-input"
+  = f.label :region, "Region:"
+  = f.text_field :region, :class => "small-input"
+  = f.label :city, "City:"
+  = f.text_field :city, :class => "small-input"
+  = f.label :zipcode1, "ZIP Code (From):"
+  = f.text_field :zipcode1, :class => "small-input"
+  = f.label :zipcode2, "ZIP Code (To):"
+  = f.text_field :zipcode2, :class => "small-input"
+  = f.label :range1
+  = f.text_field :range1, :class => "small-input"
+  = f.label :range2
+  = f.text_field :range2, :class => "small-input"
+  = f.label :price, "Price:"
+  = f.text_field :price, :class => "small-input"
+  = f.label :delivery_type, "Type (e.g. Express, Registered etc)"
+  = f.text_field :delivery_type, :class => "small-input"
+  %br/
+  = link_to_function button_title, "$(this).parent().submit();", :class => "button"
+  = link_to "Cancel", shipping_plans_path, :class => "button"

@@ -1,0 +1,48 @@
+- content_for :title do
+  Moluko - Store Theme
+- content_for :head_bottom do
+  = stylesheet_link_tag '../javascripts/jquery-lightbox/css/jquery-lightbox.css'
+  = javascript_include_tag 'jquery-lightbox/jquery-lightbox.js'
+- content_for :body_bottom do
+  :javascript
+    $(function() {
+      $('a.lightbox').lightbox({
+        fileLoadingImage:        '/javascripts/jquery-lightbox/images/loading.gif',
+        fileBottomNavCloseImage: '/javascripts/jquery-lightbox/images/closelabel.gif'
+      });
+    });
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Catalogue
+    %li &raquo;
+    %li Theme
+
+.content
+  %h2 Catalogue Theme
+
+  - @themes.each do |theme|
+    = div_for theme do
+      %div= image_tag theme.theme_images.first.data.url(:original) unless theme.theme_images.first.nil?
+      %div
+        =#%p.title= theme.name
+        %p
+          Designer:
+          = theme.designer
+        - if current_shop.theme_name == theme.name
+          = link_to "current theme", "#", :class => "button", :style => "background-color: #ddd;"
+        - else
+          = link_to "install theme", switch_theme_shop_path(:theme_id => theme.id), :class => "button"
+        %p
+          - theme.theme_images.find(:all, :limit => 2).each do |image|
+            - if image == theme.theme_images.first
+              = link_to 'screenshot', image.data.url(:original), :class => "lightbox", :rel => "set_#{theme.id}"
+            - else
+              = link_to image.id, image.data.url(:original), :class => "lightbox", :rel => "set_#{theme.id}", :style => "display: none;"
+  %div{:style => "clear: both;"}
+
+  -#%p Custom Theme
+    = link_to "use custom theme", switch_theme_shop_path(:theme_id => 0)
+    = link_to "customized theme", shop_pages_path

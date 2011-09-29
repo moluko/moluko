@@ -1,0 +1,21 @@
+- content_for :title do
+  Moluko - Edit
+  = h @shipping_plan.type
+
+- content_for :body_bottom do
+  :javascript
+    $(":input:visible:enabled:first").focus();
+
+.breadcrumb
+  %ul
+    %li Shipping Plan
+    %li &raquo;
+    %li
+      Edit
+      = h @shipping_plan.type
+.content
+  %h2
+    Edit
+    = h @shipping_plan.delivery_type
+    =# link_to "delete", @product, :title => "delete", :method => "delete", :confirm => "Are you sure you want to delete this product?", :style => "color: #f00; font-size: 0.5em;"
+  = render 'form', :button_title => 'Update'

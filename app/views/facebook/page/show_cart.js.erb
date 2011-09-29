@@ -1,0 +1,4 @@
+if ($('#fb_user_id').val() == '')
+  authenticate_user();
+else
+  $('#moluko_cart').html('<%= escape_javascript render( :partial => 'show_cart' )%>');

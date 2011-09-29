@@ -1,0 +1,13 @@
+- content_for :body_bottom do
+  :javascript
+    $(":input:visible:enabled:first").focus();
+
+= form_for [ @theme, @theme_page ], :remote => true do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :content
+  = f.text_area :content, :size => "100x20"
+
+  %div{:style => "clear: both;"}
+  = link_to_function button_title, "$(this).parent().submit();", :class => "button"
+  = link_to "Cancel", @theme, :class => "button"

@@ -1,0 +1,7 @@
+config/database.yml
+tmp/*
+log/*
+db/schema.rb
+db/*.sqlite3
+public/attachments/*
+.bundle/*

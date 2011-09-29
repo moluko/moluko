@@ -1,0 +1,124 @@
+- content_for :title do
+  Moluko - Administrator - Dashboard
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to 'Dashboard', dashboard_path
+
+.content
+  %h1 Administrator Dashboard
+
+  %table.global
+    %tbody
+      %tr
+        %td Total user(s) :
+        %td= User.count
+      %tr
+        %td Total shop(s) :
+        %td= Shop.count
+      %tr
+        %td Total product(s) :
+        %td= Product.count
+      %tr
+        %td Total order(s) :
+        %td= Order.count
+      %tr
+        %td Total cart item(s) :
+        %td= CartItem.count
+
+  %br/
+
+  %h2 List of Shops
+  %table.global
+    %thead
+      %tr
+        %th Shop Name
+        %th User
+        %th Fb Page Id
+        %th Status
+    %tbody
+      - @shops.each do |shop|
+        %tr
+          %td= link_to shop.name, shop_shop_histories_path(shop)
+          %td= link_to shop.user.email, user_user_histories_path(shop.user)
+          %td= link_to shop.fb_ids, shop.fb_ids_url, :target => '_blank'
+          %td= shop.status_name
+
+  %br/
+
+  %h2 Active Shops Size
+
+  %table.global
+    %tbody
+      %tr
+        %td p
+        %td products
+        %td i
+        %td images
+        %td s
+        %td specifications
+        %td c
+        %td categories
+        %td sp
+        %td shipping_plans
+        %td c
+        %td carts
+        %td ci
+        %td cart_items
+      %tr
+        %td o
+        %td orders
+        %td oi
+        %td order_items
+        %td ti
+        %td theme_id
+        %td uh
+        %td user_histories
+        %td sh
+        %td shop_histories
+        %td sl
+        %td shop_logs
+        %td r
+        %td roles
+  %br/
+
+  %table.global
+    %thead
+      %tr
+        %th user_email
+        %th shop_name
+        %th p
+        %th i
+        %th s
+        %th c
+        %th sp
+        %th c
+        %th ci
+        %th o
+        %th oi
+        %th ti
+        %th uh
+        %th sh
+        %th sl
+        %th r
+    %tbody
+      - @shops.each do |shop|
+        %tr
+          %td= shop.user.email
+          %td= shop.name
+          %td= shop.products.size
+          %td= shop.images.size
+          %td= shop.specifications.size
+          %td= shop.categories.size
+          %td= shop.shipping_plans.size
+          %td= shop.carts.size
+          %td= shop.cart_items.size
+          %td= shop.orders.size
+          %td= shop.order_items.size
+          %td= shop.theme_id
+          %td= shop.user.user_histories.size
+          %td= shop.shop_histories.size
+          %td= shop.shop_logs.size
+          %td= shop.user.roles.join(", ")

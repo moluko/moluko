@@ -1,0 +1,28 @@
+- content_for :title do
+  Moluko - Import Product(s)
+
+- content_for :body_bottom do
+  :javascript
+    $(":input:visible:enabled:first").focus();
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Catalogue
+    %li &raquo;
+    %li= link_to "Product", products_path
+    %li &raquo;
+    %li Import Product(s)
+
+.content
+  %h2 Import your products from an CSV file
+  #csv
+    = form_for :csv_import, :url => { :controller => 'bulk_import', :action => 'csv' }, :html => { :multipart => true } do |f|
+      = f.label :file_upload, "Upload your CSV file:"
+      = f.file_field :file, :class => "small-input"
+      = f.label :delimiter, "Use this character as a column separator:"
+      = f.text_field :delimiter, :class => "small-input", :style => "width: 20px;", :value => ","
+      %div{ :style => "clear: both;" }
+      = link_to_function "upload", "$(this).closest('form').submit()", :class => "button"
+      = link_to "Cancel", products_path, :class => "button"

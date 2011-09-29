@@ -1,0 +1,104 @@
+- content_for :title do
+  Moluko - Sales -
+  = @order.item_name
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Report
+    %li &raquo;
+    %li= link_to "Sales", sales_path
+    %li &raquo;
+    %li
+      = @order.position
+
+.content
+  %h2 Sales Details
+  %table.global
+    %thead
+      %tr
+        %th{:colspan => 2} Sales Detail
+    %tbody
+      %tr
+        %td Sales ID:
+        %td= @order.position
+      %tr
+        %td Purchased Datetime:
+        %td
+          = @order.updated_at.to_s(:long)
+          = current_user.time_zone
+          (
+          = link_to "change time zone", edit_user_path(:current)
+          )
+      %tr
+        %td Shipped To:
+        %td
+          = @order.address_name
+          %br/
+          = @order.address_street
+          %br/
+          = "#{@order.address_city}, #{@order.address_state} #{@order.address_zip}"
+          %br/
+          = @order.address_country
+      %tr
+        %td Shipping Calculation:
+        %td
+          Country:
+          = @order.country
+          %br/
+          Region:
+          = @order.region
+          %br/
+          Zip Code:
+          = @order.zipcode
+          %br/
+          Shipping Type:
+          = @order.delivery_type
+          %br/
+          Total Weight:
+          = sales_total_weight @order
+      %tr
+        %td Buyer Email:
+        %td= @order.payer_email
+      %tr
+        %td First Name:
+        %td= @order.first_name
+      %tr
+        %td Last Name:
+        %td= @order.last_name
+      %tr
+        %td Buyer Instruction:
+        %td= @order.memo
+      %tr
+        %td Paypal Transaction Id:
+        %td= @order.txn_id
+
+  %br/
+  %h2 Sales Items
+
+  %table.global
+    %thead
+      %tr
+        %th Product Title
+        %th Quantity
+        %th Price
+    %tbody
+      - @order.order_items.each do |order_item|
+        %tr
+          %td= h order_item.product_title
+          %td= order_item.product_quantity
+          %td= price_format order_item.product_price
+      %tr{:style => "text-align: right; font-weight: bold;"}
+        %td Total Item
+        %td{:colspan => 2}= sales_total_item @order
+      %tr{:style => "text-align: right; font-weight: bold;"}
+        %td Subtotal
+        %td{:colspan => 2}= sales_subtotal @order
+      %tr{:style => "text-align: right; font-weight: bold;"}
+        %td Shipping Fee
+        %td{:colspan => 2}= sales_shipping @order
+      %tr{:style => "text-align: right; font-weight: bold;"}
+        %td Total
+        %td{:colspan => 2}= sales_total @order
+  = link_to "Back", sales_path, :class => "button"

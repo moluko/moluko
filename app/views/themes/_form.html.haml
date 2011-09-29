@@ -1,0 +1,19 @@
+- content_for :body_bottom do
+  :javascript
+    $(":input:visible:enabled:first").focus();
+
+= form_for @theme, :html => { :multipart => true } do |f|
+  = f.label :name, "Name:"
+  = f.text_field :name, :class => "small-input"
+  = f.label :designer, "Designer:"
+  = f.text_field :designer, :class => "small-input"
+
+  %p Image(s)
+  - f.fields_for :theme_images do |builder|
+    = render 'theme_image_fields', :f => builder
+  .addfield
+    = link_to_add_fields "+ add new image", f, :theme_images
+
+  %div{:style => "clear: both;"}
+  = link_to_function button_title, "$(this).parent().submit();", :class => "button"
+  = link_to "Cancel", themes_path, :class => "button"

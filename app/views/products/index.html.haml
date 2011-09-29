@@ -1,0 +1,47 @@
+- content_for :title do
+  Moluko - Manage Product(s)
+
+- content_for :head_bottom do
+  = javascript_include_tag "jquery.tablednd_0_5"
+
+- content_for :body_bottom do
+  = javascript_tag do
+    = reordering_js 'products'
+    - @products.each do |product|
+      $('#product_#{product.id}_title').click(function(){    location.href = '#{edit_product_path(product)}'; });
+      $('#product_#{product.id}_category').click(function(){ location.href = '#{edit_product_path(product)}'; });
+      $('#product_#{product.id}_price').click(function(){    location.href = '#{edit_product_path(product)}'; });
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Catalogue
+    %li &raquo;
+    %li Product
+
+.content
+  %h2 Manage Your Product(s)
+  - unless flash[:info].nil?
+    .info.success= flash[:info]
+  = link_to "+ Add New Product", new_product_path, :class => "button"
+  =# link_to "Import Product(s)", bulk_import_path, :class => "button"
+
+  %div{:style => "clear: both;"}
+  - if @products.size > 0
+    %table.global
+      %thead
+        %tr
+          %th{:width => "600"} Title
+          %th Category
+          %th Price
+          %th Delete
+          %th{:width => "20"}Reorder
+      %tbody{:id => "products"}
+        - @products.each do |product|
+          %tr{:id => "product-#{product.id}", :style => "cursor: pointer;"}
+            %td{ :id => "product_#{product.id}_title" }= link_to h(product.full_title), edit_product_path(product)
+            %td{ :id => "product_#{product.id}_category" }= h product.category_name
+            %td{ :id => "product_#{product.id}_price" }= price_format product.final_price
+            %td= link_to image_tag("/images/admin/action_delete.gif", :alt => "Delete this product"), product, :method => :delete, :confirm => "Are you sure you want to delete this product?", :alt => "Delete this product"
+            %td{:class => "draghandle"}= link_to image_tag("/images/drag.gif", :alt => "Reorder this product"), "javascript:none", :alt => "Reorder this product"

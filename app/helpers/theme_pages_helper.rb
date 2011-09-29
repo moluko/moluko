@@ -1,0 +1,2 @@
+module ThemePagesHelper
+end

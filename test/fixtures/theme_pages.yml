@@ -1,0 +1,9 @@
+theme_1_theme_page_1:
+  theme: theme_1
+  name: Theme Page Name 1
+  content: Theme Page Content 1
+
+theme_1_theme_page_2:
+  theme: theme_2
+  name: Theme Page Name 2
+  content: Theme Page Content 2

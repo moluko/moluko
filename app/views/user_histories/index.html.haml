@@ -1,0 +1,40 @@
+- content_for :title do
+  Moluko - User Histories
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to 'Dashboard', dashboard_path
+    %li &raquo;
+    %li
+      = @user.email
+      histories
+
+.content
+  %h2
+    = @user.email
+    = "(#{@user.id})"
+
+  = page_entries_info @user_histories
+  %br/
+  %br/
+  = will_paginate @user_histories
+  %br/
+  %table.global
+    %thead
+      %tr
+        %th Date
+        %th Controller
+        %th Action
+        %th Params
+    %tbody
+      - @user_histories.each do |user_history|
+        %tr
+          %td= user_history.created_at.to_s(:long)
+          %td= user_history.controller
+          %td= user_history.action
+          %td= h user_history.params
+  %br/
+  = will_paginate @user_histories
+  %br/

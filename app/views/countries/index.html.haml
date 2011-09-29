@@ -1,0 +1,44 @@
+- content_for :title do
+  Moluko - Administrator - Countries
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to 'Countries', countries_path
+
+.content
+  %h1 Administrator Countries
+  %h2 List of Unknown ISO3 Countries in Shipping Plan
+  %table.global
+    %thead
+      %tr
+        %th unknown iso3
+    %tbody
+      - @unknown.each do |shipping_plan|
+        %tr
+          %td= shipping_plan.country
+
+  %h2 List of Countries
+  = link_to "+ Add New Country", new_country_path, :class => "button"
+
+  %table.global
+    %thead
+      %tr
+        %th Id
+        %th iso
+        %th iso3
+        %th name
+        %th printable name
+        %th numcode
+    %tbody
+      - @countries.each do |country|
+        %tr
+          %td= country.id
+          %td= country.iso
+          %td= country.iso3
+          %td= country.name
+          %td= country.printable_name
+          %td= country.numcode
+          %td= link_to "edit", edit_country_path(country)
+          %td= link_to image_tag("/images/admin/action_delete.gif", :alt => "Delete this country"), country, :method => :delete, :confirm => "Are you sure you want to delete this country?", :alt => "Delete this country"

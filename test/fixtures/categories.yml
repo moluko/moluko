@@ -1,0 +1,19 @@
+hat_category:
+  name: Hat
+  shop: fashion_shop
+  position: 1
+
+tshirt_category:
+  name: T-Shirt
+  shop: fashion_shop
+  position: 2
+
+dress_category:
+  name: Dress
+  shop: fashion_shop
+  position: 3
+
+pants_category:
+  name: Pants
+  shop: fashion_shop
+  position: 4

@@ -1,0 +1,56 @@
+- content_for :title do
+  Moluko - Sales
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Report
+    %li &raquo;
+    %li Sales
+
+.content
+  %h2 Sales
+  %div{:style => "clear: both;"}
+
+  = will_paginate @orders
+  %br/
+
+  %table.global
+    %thead
+      %tr
+        %th Sales ID
+        %th Date
+        %th Paid Amount
+        %th Buyer's Email
+        %th Shipped?
+    %tbody{:id => "categories"}
+      - @orders.each do |order|
+        %tr{:id => "order_#{order.position}", :class => order.shipping_status == '1' ? 'strike-row' : ''}
+          %td= order.position
+          %td= order.created_at.to_s(:long)
+          %td= sales_total order
+          %td=h order.payer_email
+          %td= check_box_tag "shipping_status_#{order.position}", nil, order.shipping_status == '1' ? true : false
+          %td= link_to "detail", sale_path(order.position)
+  %br/
+  = will_paginate @orders
+
+- content_for :body_bottom do
+  = javascript_tag do
+    - @orders.each do |order|
+      $('#shipping_status_#{order.position}').click(function(){ update_row(#{order.position});});
+
+:javascript
+  function update_row(order_id)
+  {
+    $('#order_' + order_id).toggleClass('strike-row');
+    $.ajax({
+      type: "POST",
+      url: "sales/" + order_id + "/update_shipping_status",
+      data: "",
+      success: function(data){
+      }
+    });
+  }
+

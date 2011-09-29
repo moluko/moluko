@@ -1,0 +1,98 @@
+- content_for :title do
+  Moluko - Shipping Plan
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Shipping Rates
+
+.content
+  %h2 Upload Shipping Rates Through CSV file
+  - unless flash[:info].nil?
+    .info.success= flash[:info]
+  = form_for :csv, :url => create_using_csv_shipping_plans_path, :html => { :multipart => true } do |f|
+    - unless flash[:error].nil?
+      .info.error= flash[:error]
+    = f.label :file_upload, "Upload your Shipping CSV file:"
+    = f.file_field :file, :class => "small-input"
+    = link_to_function "Upload", "$(this).parent().submit();", :class => 'button'
+
+  .shipping-tutorial
+    %p Below are information regarding the CSV file:
+    %ul
+      %li The CSV consists of 7 columns: Country Code (ISO3), Region, Zip, Weight From, Weight To, Price, Type
+      %li
+        %table
+          %tbody
+            %tr
+              %td AUS
+              %td NSW
+              %td 2000
+              %td 0
+              %td 10
+              %td 15
+              %td Fedex
+        It costs $15 to send the order to zip code 2000 (NSW region) in Australia using Fedex if the total weight of the order is between 0 to 10 kg.
+      %li
+        %table
+          %tbody
+            %tr
+              %td ITA
+              %td *
+              %td *
+              %td 0
+              %td 1.5
+              %td 5
+              %td SDA Italia
+        It costs $5 to send the order to any places in Italy using SDA Italia if the total weight of the order is between 0 to 1.5 kg
+      %li
+        %table
+          %tbody
+            %tr
+              %td *
+              %td *
+              %td *
+              %td 0
+              %td 5
+              %td 10
+              %td UPS
+            %tr
+              %td *
+              %td *
+              %td *
+              %td 0
+              %td 5
+              %td 15
+              %td Fedex Express Delivery
+        It costs $10 to send the order to anywhere worldwide using UPS if the total weight of the order is between 0 to 5 kg and the price is $15 for Fedex Express Delivery
+      %li
+        Click here to download the example:
+        = link_to "shipping_rates_sample.xls", APP_CONFIG[:domain_name] + "/shipping_rates_sample.xls"
+  %br/
+  = will_paginate @shipping_plans
+  %br/
+  %table.global
+    %thead
+      %tr
+        %th Country Code (ISO3)
+        %th Region
+        %th Zip
+        %th Weight From
+        %th Weight To
+        %th Price
+        %th Type
+        %th Delete
+    %tbody
+    - @shipping_plans.each do |shipping_plan|
+      %tr
+        %td= h shipping_plan.country
+        %td= h shipping_plan.region.titleize
+        %td= h shipping_plan.zipcode.titleize
+        %td= h shipping_plan.range1
+        %td= h shipping_plan.range2
+        %td= price_format shipping_plan.price
+        %td= h shipping_plan.delivery_type.titleize
+        %td= link_to image_tag("/images/admin/action_delete.gif", :alt => "Delete this shipping plan"), shipping_plan, :method => :delete, :confirm => "Are you sure you want to delete this shipping plan?", :alt => "Delete this shipping plan"
+  %br/
+  = will_paginate @shipping_plans

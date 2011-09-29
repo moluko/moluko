@@ -1,0 +1,24 @@
+- content_for :title do
+  Moluko - Edit custom page
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Store
+    %li &raquo;
+    %li= link_to "Theme", themes_shop_path(current_shop)
+    %li &raquo;
+    %li= link_to "Customized Theme", shop_pages_path
+    %li &raquo;
+    %li
+      Edit
+      = h @shop_page.name
+      Page
+
+.content
+  %h2
+    Edit
+    = h @shop_page.name
+    Page
+    = render 'form', { :button_title => 'Update' }

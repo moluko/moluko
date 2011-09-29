@@ -1,0 +1,31 @@
+- content_for :title do
+  Moluko - Admin
+
+.breadcrumb
+  %ul
+    %li Shop Management
+
+.content
+  %h2 Admin - Manage Your Store(s)
+  = link_to "+ Add New Store", new_shop_path, :class => "button"
+
+  %div{:style => "clear: both;"}
+
+  - if @shops.count > 0
+    %table.global
+      %thead
+        %tr
+          %th Store Name
+          %th Activation Key
+          %th Status
+          %th Paypal
+          %th{ :colspan => '2' } Currency
+      %tbody
+        - @shops.each do |shop|
+          %tr
+            %td= link_to shop.name, switch_shop_shop_path(shop)
+            %td= shop.activation_key
+            %td= shop.status_name
+            %td= shop.paypal_email
+            %td= shop.paypal_currency
+            %td= shop.paypal_currency_symbol

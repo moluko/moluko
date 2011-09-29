@@ -1,0 +1,59 @@
+development:
+  fb_app_id:
+  fb_app_profile_page_url:
+  domain_name:
+  user_mailer_default_url_options:
+  paypal_url:
+  aws_s3:
+    access_key_id:
+    secret_access_key:
+    assets_bucket:
+    host_alias:
+  email:
+    address:
+    port:
+    domain:
+    user_name:
+    password:
+    authentication:
+    enable_starttls_auto:
+
+test:
+  fb_app_id:
+  fb_app_profile_page_url:
+  domain_name:
+  user_mailer_default_url_options:
+  paypal_url:
+  aws_s3:
+    access_key_id:
+    secret_access_key:
+    assets_bucket:
+    host_alias:
+  email:
+    address:
+    port:
+    domain:
+    user_name:
+    password:
+    authentication:
+    enable_starttls_auto:
+
+production:
+  fb_app_id:
+  fb_app_profile_page_url:
+  domain_name:
+  user_mailer_default_url_options:
+  paypal_url:
+  aws_s3:
+    access_key_id:
+    secret_access_key:
+    assets_bucket:
+    host_alias:
+  email:
+    address:
+    port:
+    domain:
+    user_name:
+    password:
+    authentication:
+    enable_starttls_auto:

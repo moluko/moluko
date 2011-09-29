@@ -1,0 +1,60 @@
+#cart_content.cart-content
+  - if @cart.nil? or @cart.cart_items.empty?
+    .cart-item
+      .description Shopping cart empty
+  - else
+    - @cart.cart_items.each do |ci|
+      .cart-item
+        .description= ci.product.title_with_specifications
+        .quantity= "Qty: #{ci.quantity}"
+        .price= price_format ci.product.final_price
+        .action
+          %a{ :href => '#', :onclick => "delete_cart_item('#{ci.product.id}'); return false;" }
+            X
+    %div{ :style => 'clear: both;' }
+    %hr/
+    .cart-summary
+      .description= "Total quantity: #{cart_quantity @cart}"
+      .label Subtotal:
+      .value= "#{@cart.shop.paypal_currency_symbol} #{price_format cart_subtotal(@cart)}"
+    - if @cart.shipping_fee.nil?
+      .cart-summary
+        .description
+          %a{ :href => '#', :onclick => "show_calculate_shipping_dialog(); return false;" }
+            Calculate Shipping Fee!
+    - else
+      .cart-summary
+        .description
+          %a{ :href => '#', :onclick => "show_calculate_shipping_dialog(); return false;" }
+            Calculate Shipping Fee!
+        .label Shipping:
+        .value= "#{@cart.shop.paypal_currency_symbol} #{price_format @cart.shipping_fee}"
+      .cart-summary
+        .description &nbsp;
+        .label Total:
+        .value= "#{@cart.shop.paypal_currency_symbol} #{price_format cart_total(@cart)}"
+      .cart-summary
+        .description &nbsp;
+        .value
+          %form{ :target => '_blank', :method => 'post', :action => "#{APP_CONFIG[:paypal_url]}/cgi-bin/webscr" }
+            %input{ :type => 'hidden', :name => 'cmd', :value => '_cart' }
+            %input{ :type => 'hidden', :name => 'upload', :value => '1' }
+            %input{ :type => 'hidden', :name => 'business', :value => "#{@cart.shop.paypal_email}" }
+            %input{ :type => 'hidden', :name => 'currency_code', :value => "#{@cart.shop.paypal_currency}" }
+            %input{ :type => 'hidden', :name => 'notify_url', :value => "#{APP_CONFIG[:domain_name]}/checkout_notifications" }
+            %input{ :type => 'hidden', :name => 'custom', :value => "#{@cart.id}" }
+            - @cart.cart_items.each_with_index do |ci, i|
+              %input{ :type => 'hidden', :name => "item_name_#{i+1}", :value => "#{ci.product.title_with_specifications}" }
+              %input{ :type => 'hidden', :name => "amount_#{i+1}", :value => "#{ci.product.final_price}" }
+              %input{ :type => 'hidden', :name => "item_number_#{i+1}", :value => "#{ci.product.sku}" }
+              %input{ :type => 'hidden', :name => "quantity_#{i+1}", :value => "#{ci.quantity}" }
+            %input{ :type => 'hidden', :name => 'shipping_1', :value => "#{@cart.shipping_fee}" }
+            %input{ :style => "width: auto;", :type => "image", :src => "http://www.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif", :name => "submit", :alt => "Make payments with PayPal - it's fast, free and secure!" }
+      %div{ :style => 'clear: both;' }
+
+.cart-header
+  %a{ :id => 'toggle_cart', :href => '#', :onclick => "toggle_cart('Show Shopping Cart','Hide Shopping Cart'); return false;" }
+    Hide Shopping Cart
+  |
+  %a{ :href => '#', :onclick => "show_cart(); return false;" }
+    Refresh

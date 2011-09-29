@@ -1,0 +1,16 @@
+- content_for :title do
+  Moluko - Add New Category
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Catalogue
+    %li &raquo;
+    %li= link_to "Category", categories_path
+    %li &raquo;
+    %li Add New Category
+
+.content
+  %h2 Add New Category
+  = render "form", :button_title => "Save"

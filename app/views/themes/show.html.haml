@@ -1,0 +1,34 @@
+- content_for :title do
+  Moluko - Manage Theme Pages
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to "Predefined Theme", themes_path
+    %li &raquo;
+    %li
+      = @theme.name
+      theme
+    %li &raquo;
+    %li Pages
+
+.content
+  %h2
+    Pages for
+    = @theme.name
+    theme
+  = link_to "+ Add New Page", new_theme_theme_page_path(@theme), :class => "button"
+  %div{:style => "clear: both;"}
+
+  %table.global
+    %thead
+      %tr
+        %th Page ID
+        %th Page Name
+    %tbody{:id => "categories"}
+      - @theme.theme_pages.order('id').each do |theme_page|
+        %tr
+          %td= theme_page.id
+          %td= theme_page.name
+          %td= link_to "edit", edit_theme_theme_page_path(@theme, theme_page)

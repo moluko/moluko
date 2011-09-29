@@ -1,0 +1,7 @@
+.activation
+  = form_tag facebook_page_path( @fb_id ), :method => :put do
+    .label= label_tag :activation_key, 'Store Activation Key'
+    #activation_key.text= text_field_tag :activation_key
+    %div{ :style => 'clear: both;' }
+    .submit= submit_tag 'Process'
+  = powered_by_moluko

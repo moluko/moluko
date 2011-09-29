@@ -1,0 +1,230 @@
+/*--------------------------------
+ General
+---------------------------------*/
+body
+{
+  width: 510px;
+}
+
+/*--------------------------------
+ Store Activation
+---------------------------------*/
+.activation
+{
+  border: 1px solid #ccc;
+  padding: 10px 0px;
+  padding-left: 30px;
+}
+.activation .label
+{
+  float: left;
+  font-size: 12px;
+  margin-top: 3px;
+}
+.activation .text
+{
+  float: left;
+  margin-left: 10px;
+}
+.activation .text input
+{
+  border: 1px solid #888;
+  width: 300px;
+  padding: 2px;
+}
+.activation .submit
+{
+  margin-left: 135px;
+  margin-top: 10px;
+}
+.activation .submit input
+{
+  background-color: #3b5998;
+  border-color: #D9DFEA #0E1F5B #0E1F5B #D9DFEA;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 12px;
+}
+.activation a
+{
+  margin-left: 330px;
+  font-size: 10px;
+  text-decoration: none;
+}
+/*--------------------------------
+Store Close
+---------------------------------*/
+.store-close
+{
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  clear: both;
+  font-size: 13px;
+  line-height: 17px;
+  padding: 37px 20px 39px;
+  text-align: center;
+}
+.store-close a
+{
+  font-size: 10px;
+}
+/*--------------------------------
+Store Cart
+---------------------------------*/
+#moluko_cart
+{
+  border: 1px solid #aaa;
+  margin-bottom: 5px;
+  font-size: 11px;
+  font-family: Verdana, Arial;
+  margin-left: 5px;
+}
+.cart-header
+{
+  background-color: #3B5998;
+  padding: 10px;
+  color: #fff;
+}
+.cart-header a
+{
+  color: #fff;
+  font-size: 12px;
+}
+.cart-content
+{
+  padding: 0px 10px;
+}
+.cart-item
+{
+  padding: 10px 0px;
+  height: 10px;
+}
+.cart-item div
+{
+  float: left;
+  margin-right: 5px;
+}
+.cart-item .description
+{
+  width: 310px;
+}
+.cart-item .quantity
+{
+  width: 50px;
+}
+.cart-item .price
+{
+  width: 80px;
+  text-align: right;
+}
+.cart-item .action
+{
+  width: 10px;
+  text-align: right;
+}
+.cart-summary
+{
+  height: 18px;
+}
+.cart-summary div
+{
+  float: left;
+  margin-right: 5px;
+  text-align: right;
+}
+.cart-summary .description
+{
+  width: 300px;
+}
+.cart-summary .label
+{
+  width: 60px;
+}
+.cart-summary .value
+{
+  width: 100px;
+  font-weight: bold;
+}
+.moluko-button input
+{
+  cursor: pointer;
+  font-size: 12px;
+  padding: 7px 12px;
+  background-color: #3b5998;
+  border: none;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+}
+.moluko-text input
+{
+  border: 1px solid #888;
+  padding: 2px;
+  margin-top: 10px;
+}
+.moluko-dropdown select
+{
+  margin-top: 10px;
+  padding: 3px;
+}
+#add_to_cart .left
+{
+  float: left;
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  width: 200px;
+}
+#add_to_cart .right
+{
+  float: left;
+  padding: 0px 5px;
+  width: 200px;
+}
+/*--------------------------------
+ Ajax Load Position
+---------------------------------*/
+.ajax-loading
+{
+  margin-top: 10px;
+  text-align: center;
+}
+/*--------------------------------
+ Facebook  Dialog
+---------------------------------*/
+#dialog_container
+{
+  font-size: 11px;
+}
+#add_to_cart
+{
+  height: 230px;
+}
+#add_to_cart .left
+{
+  float: left;
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  width: 200px;
+}
+#add_to_cart .right
+{
+  margin-left: 5px;
+  float: left;
+  padding: 0px 5px;
+  width: 200px;
+}
+/*--------------------------------
+ Moluko Content
+---------------------------------*/
+#moluko_content
+{
+  font-family: Verdana, Arial;
+  font-size: 10px;
+}

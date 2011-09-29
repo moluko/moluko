@@ -1,0 +1,14 @@
+- content_for :title do
+  Moluko - Add New Country
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to "Countries", countries_path
+    %li &raquo;
+    %li Add New Country
+
+.content
+  %h2 Add New Product
+  = render 'form', { :button_title => 'Save' }

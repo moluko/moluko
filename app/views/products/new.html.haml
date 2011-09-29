@@ -1,0 +1,16 @@
+- content_for :title do
+  Moluko - Add New Product
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Catalogue
+    %li &raquo;
+    %li= link_to "Product", products_path
+    %li &raquo;
+    %li Add New Product
+
+.content
+  %h2 Add New Product
+  = render 'form', { :button_title => 'Save', :show_url_to_product => false }

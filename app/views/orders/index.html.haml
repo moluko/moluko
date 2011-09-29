@@ -1,0 +1,36 @@
+- content_for :title do
+  Moluko - Sales
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Report
+    %li &raquo;
+    %li Sales
+
+.content
+  %h2 Sales
+  %div{:style => "clear: both;"}
+
+  %table.global
+    %thead
+      %tr
+        %th Date
+        %th Product
+        %th Quantity
+        %th Paid Amount
+        %th Buyer's Email
+        %th Shipped?
+    %tbody{:id => "categories"}
+      - @orders.each do |order|
+        %tr
+          %td= order.created_at.to_s(:long)
+          %td= order.product_title 
+          %td= order.specifications
+          %td= order.quantity
+          %td= order.shipping
+          %td= order.amount
+          %td= order.payment_status
+          %td= order.customer_email
+          %td= order.txn_id

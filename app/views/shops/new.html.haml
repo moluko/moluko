@@ -1,0 +1,20 @@
+- content_for :title do
+  Moluko - Add New Store
+
+.breadcrumb
+  %ul
+    %li Store Management
+    %li &raquo;
+    %li Add New Store
+
+.content
+  %h2 Add New Store
+  = form_for @shop do |f|
+    - unless flash[:error].nil?
+      .info.error= flash[:error]
+    = f.label :name
+    = f.text_field :name
+
+    %div{ :style => "clear: both;" }
+    = link_to_function "Save", "$(this).parent().submit();", :class => "button"
+    = link_to "Cancel", shops_path, :class => "button"

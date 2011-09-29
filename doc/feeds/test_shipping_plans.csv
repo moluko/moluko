@@ -1,0 +1,15 @@
+Country Code (ISO3);Region;Zip;Weight From;Weight To;Price;Type
+*;*;*;0;9999;3000;FedEx
+IDN;*;*;0;9999;1200;Tiki
+IDN;*;*;0;9999;800;Pos Indonesia
+IDN;Sumatera Utara;*;0;9999;400;Pos Indonesia
+IDN;Sumatera Utara;20115;0;9999;200;Pos Indonesia
+IDN;Sumatera Utara;20114;0;9999;300;Pos Indonesia
+IDN;Jakarta;*;0;9999;800;Tiki
+IDN;Jakarta;30110;0;9999;700;Tiki
+IDN;Jakarta;30111;0;9999;800;Tiki
+IDN;Surabaya;*;0;9999;800;Tiki
+AUS;*;*;0;9999;2500;FedEx
+AUS;New South Wales;*;0;10;1500;FedEx
+AUS;New South Wales;*;11;9999;2200;FedEx
+IND;*;*;0;9999;2000;FedEx

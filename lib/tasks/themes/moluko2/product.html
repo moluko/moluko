@@ -1,0 +1,77 @@
+<div class="product-header">
+  <h2>
+      {{ data['current_product'].title }}
+  </h2>
+  <div class="float-left">
+    <a onclick="link_to_page('storefront', {}); return false;">Back to Store Front</a>
+  </div>
+  <div class="float-right">
+    <a href="http://moluko.com" class = "powered-by" target = "blank">Powered by Moluko</a>
+  </div>
+</div>
+<div class="product-images">
+  {% for image in data['current_product'].images %}
+    <div id="image_{{ image.id }}" class="normal">
+      <img src='{{ image.normal }}' />
+    </div>
+  {% endfor %}
+  {% if data['current_product'].images.size > 1 %}
+    <div class="thumbnail">
+      {% for image in data['current_product'].images %}
+        <img src='{{ image.thumb }}' onclick="display_photo({{ image.id }});"/>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+<div class="product-description">
+  {% if data['current_product'].discount_status == '1' %}
+    <div class="override_price">{{ data['currency_symbol'] }} {{ data['current_product'].price | currency_format }}</div>
+    <div class="discount_price">{{ data['currency_symbol'] }} {{ data['current_product'].discount_price | currency_format }} (Special!)</div>
+  {% else %}
+    <div class="price">{{ data['currency_symbol'] }} {{ data['current_product'].price | currency_format }}</div>
+  {% endif %}
+
+  <div style="clear: both;"/>
+  <div class="description">
+    <h3>Description</h3>
+    <p>{{ data['current_product'].description }}</p>
+    {% for specification in data['current_product'].specifications %}
+      {{ specification.key }}: {{ specification.value }}
+      <br />
+    {% endfor %}
+    {% if data['current_product_variant'] != nil %}
+      <p>
+        <select id="product_variant" onchange="link_to_page('product', { 'product_id' : document.getElementById('product_variant').getValue() } ); return false;">
+            <option>Related product</option>
+        {% for product in data['current_product_variant'] %}
+            <option value={{ product.id }}>
+              {{ product.specifications_string }}
+            </option>
+        {% endfor %}
+        </select>
+      </p>
+    {% endif %}
+  </div>
+  <div style="clear: both;"/>
+  <div class = "action-button">
+    <div class="visit-button">
+      {{ data['current_product'] | visit_button }}
+    </div>
+    <div class="buy-button">
+      {{ data['current_product'] | buy_button }}
+    </div>
+  </div>
+</div>
+<script>
+$('#image_{{ data['current_product'].images.first.id }}').css("display", "block");
+function display_photo(id)
+{
+  var photos = [];
+  {% for image in data['current_product'].images %}
+    photos.push({{ image.id }});
+  {% endfor %}
+  for ( var i = 0; i < photos.length; ++i )
+    $("#image_" + photos[i]).css("display", "none");
+  $("#image_" + id).css("display", "block");
+}
+</script>

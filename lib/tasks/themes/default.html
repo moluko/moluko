@@ -1,0 +1,91 @@
+<div>
+  <h1>Store Data</h1>
+  Current Category ID = {{ data['current_category_id'] }}<br />
+  Current Categories Page = {{ data['current_categories_page'] }}<br />
+  Current Product ID = {{ data['current_product_id'] }}<br />
+  Current Products Page = {{ data['current_products_page'] }}
+</div>
+<div>
+  <h1>Current Category</h1>
+  {% if data['current_category_id'] == '0' %}
+  All Products
+  {% else %}
+  {{ data['current_category'].name }}
+  {% endif %}
+</div>
+<div>
+  <h1>Categories</h1>
+    <a onclick="link_to_page('1', {'category_id' : 0 }); return false;">
+      All Products
+    </a> |
+  {% for category in data['categories'] %}
+    <a onclick="link_to_page('1', {'category_id' : {{ category.id }} }); return false;">
+      {{ category.name }}
+    </a> |
+  {% endfor %}
+</div>
+<div>
+  <h1>Categories Pagination</h1>
+  <div>Categories size: {{ data['categories_size'] }}</div>
+  <div>Categories page size: {{ data['categories_page_size'] }}</div>
+  {% if data['current_categories_page'] != '1' %}
+  <a onclick="link_to_page('1', {'categories_page' : {{ data['current_categories_page'] }} - 1 }); return false;">
+    Previous Categories
+  </a> |
+  {% endif %}
+  {% for link_number in data['categories_pagination_range'] %}
+    {% if link_number == data['current_categories_page'] %}
+      {{ link_number }}
+    {% else %}
+      <a onclick="link_to_page('1', {'categories_page' : {{ link_number }} }); return false;">
+        {{ link_number }}
+      </a>
+    {% endif %}
+    |
+  {% endfor %}
+  {% if data['current_categories_page'] != data['categories_page_size'] %}
+  <a onclick="link_to_page('1', {'categories_page' : {{ data['current_categories_page'] }} + 1 }); return false;">
+    Next Categories
+  </a>
+  {% endif %}
+</div>
+<div>
+  <h1>Products</h1>
+  {% for product in data['products'] %}
+    <a onclick="link_to_page('1', {'product_id' : {{ product.id }} }); return false;">
+      {{ product.title }}
+    </a> |
+  {% endfor %}
+</div>
+<div>
+  <h1>Products Pagination</h1>
+  <div>Products size: {{ data['products_size'] }}</div>
+  <div>Products page size: {{ data['products_page_size'] }}</div>
+  {% if data['current_products_page'] != '1' %}
+  <a onclick="link_to_page('1', {'products_page' : {{ data['current_products_page'] }} - 1 }); return false;">
+    Previous Products
+  </a> |
+  {% endif %}
+  {% for link_number in data['products_pagination_range'] %}
+    {% if link_number == data['current_products_page'] %}
+      {{ link_number }}
+    {% else %}
+      <a onclick="link_to_page('1', {'products_page' : {{ link_number }} }); return false;">
+        {{ link_number }}
+      </a>
+    {% endif %}
+    |
+  {% endfor %}
+  {% if data['current_products_page'] != data['products_page_size'] %}
+  <a onclick="link_to_page('1', {'products_page' : {{ data['current_products_page'] }} + 1 }); return false;">
+    Next Products
+  </a>
+  {% endif %}
+</div>
+{% if data['current_product'] != nil %}
+  <div>
+    <h1>Current Product</h1>
+    <div>{{ data['current_product'].title }}</div>
+    <div><img src="{{ data['current_product'].images.first.medium }}"/></div>
+  </div>
+{% endif %}

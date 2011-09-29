@@ -1,0 +1,8 @@
+.fields{:style => "width: 305px"}
+  %div{:style => "float: right;"}
+    = link_to_remove_fields image_tag("/images/admin/action_delete.gif"), f
+  - unless f.object.data.original_filename.nil?
+    = image_tag f.object.data.url(:medium), :class => "thumbnail"
+    %br/
+  = f.label :data, "File:"
+  = f.file_field :data

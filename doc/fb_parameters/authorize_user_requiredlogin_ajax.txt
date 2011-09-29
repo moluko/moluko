@@ -1,0 +1,18 @@
+Processing FacebookPagesController#add_to_cart (for 66.220.153.245 at 2010-10-20 04:49:48) [POST]
+  Parameters: {"fb_sig_app_id"=>"143063219056876"
+      , "product_id"=>"1312"
+      , "action"=>"add_to_cart"
+      , "fb_sig_locale"=>"en_US"
+      , "fb_sig_in_new_facebook"=>"1"
+      , "fb_sig"=>"f42a44a7b1d6491c8cb7af9edb4c090c"
+      , "fb_sig_profile"=>"238502048416"
+      , "fb_sig_added"=>"1"
+      , "fb_sig_expires"=>"1287554400"
+      , "fb_sig_session_key"=>"2.ragyxXdZSrWVEKtOiOviLQ__.3600.1287554400-1373083302"
+      , "fb_sig_country"=>"id"
+      , "controller"=>"facebook_pages"
+      , "fb_sig_is_ajax"=>"1"
+      , "fb_sig_api_key"=>"faed83e25d7a178ee57d7b3eca8c410f"
+      , "fb_sig_time"=>"1287550047.6778"
+      , "fb_sig_profile_update_time"=>"1270488834"
+      , "fb_sig_user"=>"1373083302"}

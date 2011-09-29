@@ -1,0 +1,22 @@
+= form_for @country do |f|
+  %div{:style => "clear: left"}
+  - unless flash[:error].nil?
+    .info.error= flash[:error]
+  = f.label :iso, "Iso:"
+  = f.text_field :iso, :class => "small-input"
+
+  = f.label :iso3, "Iso3:"
+  = f.text_field :iso3, :class => "small-input"
+
+  = f.label :name, "Name:"
+  = f.text_field :name, :class => "small-input"
+
+  = f.label :printable_name, "Printable Name:"
+  = f.text_field :printable_name, :class => "small-input"
+
+  = f.label :numcode, "Numcode Name:"
+  = f.text_field :numcode, :class => "small-input"
+
+  %div{ :style => "clear: both;" }
+  = link_to_function button_title, "$(this).closest('form').submit()", :class => "button"
+  = link_to "Cancel", countries_path, :class => "button"

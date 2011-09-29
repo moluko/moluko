@@ -1,0 +1,21 @@
+- content_for :title do
+  Moluko - Edit
+  = h @category.name
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Catalogue
+    %li &raquo;
+    %li= link_to "Category", categories_path
+    %li &raquo;
+    %li
+      Edit
+      = h @category.name
+
+.content
+  %h2
+    Edit
+    = h @category.name
+  = render "form", :button_title => "Save"

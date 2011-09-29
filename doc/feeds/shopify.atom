@@ -1,0 +1,131 @@
+<?xml version='1.0'?>
+<feed xmlns:opensearch='http://a9.com/-/spec/opensearch/1.1/' xmlns:s='http://jadedpixel.com/-/spec/shopify' xmlns='http://www.w3.org/2005/Atom'>
+  <id>http://aisego.myshopify.com/collections/all.atom</id>
+  <title>aisego</title>
+  <author>
+    <name>aisego</name>
+  </author>
+  <link href='http://aisego.myshopify.com/collections/all.atom' rel='self'/><link href='http://aisego.myshopify.com/collections/all.atom' rel='alternate'/>
+  <updated>2010-03-24T15:23:06-04:00</updated>
+  <entry>
+    <id>tag:db1@shopify.com,2010:products/14722282</id>
+    <title>Perfect Grade OO Raiser</title>
+    <s:type>Gundam Plastic</s:type>
+    <s:vendor>Bandai</s:vendor>
+    <summary type='html'><![CDATA[      <table border="0">
+        <tr>
+          <td width="200"><img width="200" src="http://cdn.shopify.com/s/files/1/0046/0502/products/1.jpg?1269502087" /></td>
+          <td valign="bottom">
+            <p>
+              <strong>Vendor: </strong>Bandai<br />
+              <strong>Type: </strong>Gundam Plastic<br />
+              <strong>Price: </strong>
+              250.00
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><p>The best perfect grade ever created<br />
+              Nice to have it!</p></td>
+        </tr>
+      </table>
+      ]]></summary>
+    <s:variant>
+      <id>tag:db1@shopify.com,2010:product_variants/36576062</id>
+      <title>Default Title</title>
+      <s:price currency='USD'>250.00</s:price>
+      <s:compare_at_price>250.00</s:compare_at_price>
+      <s:sku></s:sku>
+      <s:grams>5000</s:grams>
+      <s:inventory_tracking></s:inventory_tracking>
+      <link href='http://aisego.myshopify.com/admin/products/14722282/variants/36576062.xml' rel='edit'/>
+    </s:variant>
+    <content src='http://cdn.shopify.com/s/files/1/0046/0502/products/1.jpg?1269502087' type='image/jpg'/>
+    <published>2010-03-24T15:23:06-04:00</published>
+    <updated>2010-03-24T15:23:06-04:00</updated>
+    <link href='http://aisego.myshopify.com/products/perfect-grade-oo-raiser' rel='alternate'/>
+  </entry>
+  <entry>
+    <id>tag:db1@shopify.com,2010:products/14322082</id>
+    <title>Gundam Astray Red Frame Perfect Grade</title>
+    <s:type>Gundam Plastic</s:type>
+    <s:vendor>Bandai</s:vendor>
+    <summary type='html'><![CDATA[      <table border="0">
+        <tr>
+          <td width="200"><img width="200" src="http://cdn.shopify.com/s/files/1/0046/0502/products/913767.jpg?1269502087" /></td>
+          <td valign="bottom">
+            <p>
+              <strong>Vendor: </strong>Bandai<br />
+              <strong>Type: </strong>Gundam Plastic<br />
+              <strong>Price: </strong>
+              350.00
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><p>It is perfect grade yo</p></td>
+        </tr>
+      </table>
+      ]]></summary>
+    <s:variant>
+      <id>tag:db1@shopify.com,2010:product_variants/35769052</id>
+      <title>Default Title</title>
+      <s:price currency='USD'>350.00</s:price>
+      <s:compare_at_price>350.00</s:compare_at_price>
+      <s:sku></s:sku>
+      <s:grams>1000</s:grams>
+      <s:inventory_tracking></s:inventory_tracking>
+      <link href='http://aisego.myshopify.com/admin/products/14322082/variants/35769052.xml' rel='edit'/>
+    </s:variant>
+    <content src='http://cdn.shopify.com/s/files/1/0046/0502/products/913767.jpg?1269502087' type='image/jpg'/>
+    <published>2010-03-15T14:44:25-04:00</published>
+    <updated>2010-03-15T14:44:25-04:00</updated>
+    <link href='http://aisego.myshopify.com/products/gundam-astray-red-frame-perfect-grade' rel='alternate'/>
+  </entry>
+  <entry>
+    <id>tag:db1@shopify.com,2010:products/14191272</id>
+    <title>Shopify T-Shirt</title>
+    <s:type>Shirts</s:type>
+    <s:vendor>Shopify</s:vendor>
+    <summary type='html'><![CDATA[      <table border="0">
+        <tr>
+          <td width="200"><img width="200" src="http://cdn.shopify.com/s/files/1/0046/0502/products/shopify_shirt.png?1269502087" /></td>
+          <td valign="bottom">
+            <p>
+              <strong>Vendor: </strong>Shopify<br />
+              <strong>Type: </strong>Shirts<br />
+              <strong>Price: </strong>
+              19.00
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><p>So this is a product.</p>
+            <p>The text you see here is a Product Description. Every product has a price, a weight, a picture and a description.  To edit the description of this product or to create a new product you can go to the <a href="/admin/products">Products Tab</a> of the administration menu.</p>
+            <p>Once you have mastered the creation and editing of products you will want your products to show up on your Shopify site.  There is a two step process to do this.</p>
+            <p>First you need to add your products to a Collection.  A Collection is an easy way to group products together. If you go to the <a href="/admin/collections">Collections Tab</a> of the administration menu you can begin creating collections and adding products to them.</p>
+            <p>Second you&#8217;ll need to create a link from your shop&#8217;s navigation menu to your Collections. You can do this by going to the <a href="/admin/links">Navigations Tab</a> of the administration menu and clicking on &#8220;Add a link&#8221;.</p>
+            <p>Good luck with your shop!</p></td>
+        </tr>
+      </table>
+      ]]></summary>
+    <s:variant>
+      <id>tag:db1@shopify.com,2010:product_variants/35548122</id>
+      <title>Medium</title>
+      <s:price currency='USD'>19.00</s:price>
+      <s:compare_at_price>19.00</s:compare_at_price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+      <s:inventory_tracking>shopify
+      </s:inventory_tracking><s:inventory_quantity>0</s:inventory_quantity>
+      <s:inventory_policy>deny</s:inventory_policy>
+      <link href='http://aisego.myshopify.com/admin/products/14191272/variants/35548122.xml' rel='edit'/>
+    </s:variant>
+    <s:tag>Demo</s:tag>
+    <s:tag>T-Shirt</s:tag>
+    <content src='http://cdn.shopify.com/s/files/1/0046/0502/products/shopify_shirt.png?1269502087' type='image/png'/>
+    <published>2010-03-12T11:00:09-05:00</published>
+    <updated>2010-03-12T11:00:09-05:00</updated>
+    <link href='http://aisego.myshopify.com/products/shopify-t-shirt' rel='alternate'/>
+  </entry>
+</feed>

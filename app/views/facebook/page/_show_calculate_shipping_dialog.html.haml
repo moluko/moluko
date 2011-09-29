@@ -1,0 +1,20 @@
+- if @cart.shop.shipping_plans.size == 0
+- else
+  = label_tag :country, 'Country:'
+  .moluko-dropdown
+    = select_tag :country, options_for_select(@countries, :selected => @cart.country)
+  %br/
+  = label_tag :region, 'Region:'
+  .moluko-text
+    = text_field_tag :region, @cart.region, :style => "width: 200px;"
+  %br/
+  = label_tag :zipcode, 'Zip Code:'
+  .moluko-text
+    = text_field_tag :zipcode, @cart.zipcode, :style => "width: 200px;"
+  %br/
+  = label_tag :delivery_type, 'Shipping:'
+  .moluko-dropdown
+    = select_tag :delivery_type, options_for_select(@delivery_types, :selected => @cart.delivery_type)
+  .moluko-button
+    %input{ :type => 'submit', :value => 'Calculate', :onclick => "calculate_shipping($('#country').val(), $('#region').val(), $('#zipcode').val(), $('#delivery_type').val()); return false;" }
+#shipping_result

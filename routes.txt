@@ -1,0 +1,164 @@
+(in /home/team/public_html/moluko.com/dev)
+                      bulk_import        /bulk_import                                      {:action=>"index", :controller=>"bulk_import"}
+                             home        /home                                             {:action=>"home", :controller=>"pages"}
+                         benefits        /benefits                                         {:action=>"benefits", :controller=>"pages"}
+                          pricing        /pricing                                          {:action=>"pricing", :controller=>"pages"}
+                            about        /about                                            {:action=>"about", :controller=>"pages"}
+                        dashboard        /dashboard                                        {:action=>"dashboard", :controller=>"pages"}
+                       getstarted        /getstarted                                       {:action=>"getstarted", :controller=>"pages"}
+                             help        /help                                             {:action=>"help", :controller=>"pages"}
+                           signup        /signup                                           {:action=>"new", :controller=>"users"}
+                            login        /login                                            {:action=>"new", :controller=>"user_sessions"}
+                           logout        /logout                                           {:action=>"destroy", :controller=>"user_sessions"}
+                    user_sessions GET    /user_sessions(.:format)                          {:action=>"index", :controller=>"user_sessions"}
+                                  POST   /user_sessions(.:format)                          {:action=>"create", :controller=>"user_sessions"}
+                 new_user_session GET    /user_sessions/new(.:format)                      {:action=>"new", :controller=>"user_sessions"}
+                edit_user_session GET    /user_sessions/:id/edit(.:format)                 {:action=>"edit", :controller=>"user_sessions"}
+                     user_session GET    /user_sessions/:id(.:format)                      {:action=>"show", :controller=>"user_sessions"}
+                                  PUT    /user_sessions/:id(.:format)                      {:action=>"update", :controller=>"user_sessions"}
+                                  DELETE /user_sessions/:id(.:format)                      {:action=>"destroy", :controller=>"user_sessions"}
+              user_user_histories GET    /users/:user_id/user_histories(.:format)          {:action=>"index", :controller=>"user_histories"}
+                                  POST   /users/:user_id/user_histories(.:format)          {:action=>"create", :controller=>"user_histories"}
+            new_user_user_history GET    /users/:user_id/user_histories/new(.:format)      {:action=>"new", :controller=>"user_histories"}
+           edit_user_user_history GET    /users/:user_id/user_histories/:id/edit(.:format) {:action=>"edit", :controller=>"user_histories"}
+                user_user_history GET    /users/:user_id/user_histories/:id(.:format)      {:action=>"show", :controller=>"user_histories"}
+                                  PUT    /users/:user_id/user_histories/:id(.:format)      {:action=>"update", :controller=>"user_histories"}
+                                  DELETE /users/:user_id/user_histories/:id(.:format)      {:action=>"destroy", :controller=>"user_histories"}
+                            users GET    /users(.:format)                                  {:action=>"index", :controller=>"users"}
+                                  POST   /users(.:format)                                  {:action=>"create", :controller=>"users"}
+                         new_user GET    /users/new(.:format)                              {:action=>"new", :controller=>"users"}
+                        edit_user GET    /users/:id/edit(.:format)                         {:action=>"edit", :controller=>"users"}
+                             user GET    /users/:id(.:format)                              {:action=>"show", :controller=>"users"}
+                                  PUT    /users/:id(.:format)                              {:action=>"update", :controller=>"users"}
+                                  DELETE /users/:id(.:format)                              {:action=>"destroy", :controller=>"users"}
+               all_user_histories        /all_user_histories                               {:action=>"all_user_histories", :controller=>"user_histories"}
+               all_shop_histories        /all_shop_histories                               {:action=>"all_shop_histories", :controller=>"shop_histories"}
+                         products GET    /products(.:format)                               {:action=>"index", :controller=>"products"}
+                                  POST   /products(.:format)                               {:action=>"create", :controller=>"products"}
+                      new_product GET    /products/new(.:format)                           {:action=>"new", :controller=>"products"}
+                     edit_product GET    /products/:id/edit(.:format)                      {:action=>"edit", :controller=>"products"}
+                          product GET    /products/:id(.:format)                           {:action=>"show", :controller=>"products"}
+                                  PUT    /products/:id(.:format)                           {:action=>"update", :controller=>"products"}
+                                  DELETE /products/:id(.:format)                           {:action=>"destroy", :controller=>"products"}
+                            sales GET    /sales(.:format)                                  {:action=>"index", :controller=>"sales"}
+                                  POST   /sales(.:format)                                  {:action=>"create", :controller=>"sales"}
+                         new_sale GET    /sales/new(.:format)                              {:action=>"new", :controller=>"sales"}
+      update_shipping_status_sale POST   /sales/:id/update_shipping_status(.:format)       {:action=>"update_shipping_status", :controller=>"sales"}
+                        edit_sale GET    /sales/:id/edit(.:format)                         {:action=>"edit", :controller=>"sales"}
+                             sale GET    /sales/:id(.:format)                              {:action=>"show", :controller=>"sales"}
+                                  PUT    /sales/:id(.:format)                              {:action=>"update", :controller=>"sales"}
+                                  DELETE /sales/:id(.:format)                              {:action=>"destroy", :controller=>"sales"}
+                       categories GET    /categories(.:format)                             {:action=>"index", :controller=>"categories"}
+                                  POST   /categories(.:format)                             {:action=>"create", :controller=>"categories"}
+                     new_category GET    /categories/new(.:format)                         {:action=>"new", :controller=>"categories"}
+                    edit_category GET    /categories/:id/edit(.:format)                    {:action=>"edit", :controller=>"categories"}
+                         category GET    /categories/:id(.:format)                         {:action=>"show", :controller=>"categories"}
+                                  PUT    /categories/:id(.:format)                         {:action=>"update", :controller=>"categories"}
+                                  DELETE /categories/:id(.:format)                         {:action=>"destroy", :controller=>"categories"}
+                          paypals GET    /paypals(.:format)                                {:action=>"index", :controller=>"paypals"}
+                                  POST   /paypals(.:format)                                {:action=>"create", :controller=>"paypals"}
+                       new_paypal GET    /paypals/new(.:format)                            {:action=>"new", :controller=>"paypals"}
+                      edit_paypal GET    /paypals/:id/edit(.:format)                       {:action=>"edit", :controller=>"paypals"}
+                           paypal GET    /paypals/:id(.:format)                            {:action=>"show", :controller=>"paypals"}
+                                  PUT    /paypals/:id(.:format)                            {:action=>"update", :controller=>"paypals"}
+                                  DELETE /paypals/:id(.:format)                            {:action=>"destroy", :controller=>"paypals"}
+       subscription_notifications GET    /subscription_notifications(.:format)             {:action=>"index", :controller=>"subscription_notifications"}
+                                  POST   /subscription_notifications(.:format)             {:action=>"create", :controller=>"subscription_notifications"}
+    new_subscription_notification GET    /subscription_notifications/new(.:format)         {:action=>"new", :controller=>"subscription_notifications"}
+   edit_subscription_notification GET    /subscription_notifications/:id/edit(.:format)    {:action=>"edit", :controller=>"subscription_notifications"}
+        subscription_notification GET    /subscription_notifications/:id(.:format)         {:action=>"show", :controller=>"subscription_notifications"}
+                                  PUT    /subscription_notifications/:id(.:format)         {:action=>"update", :controller=>"subscription_notifications"}
+                                  DELETE /subscription_notifications/:id(.:format)         {:action=>"destroy", :controller=>"subscription_notifications"}
+           checkout_notifications GET    /checkout_notifications(.:format)                 {:action=>"index", :controller=>"checkout_notifications"}
+                                  POST   /checkout_notifications(.:format)                 {:action=>"create", :controller=>"checkout_notifications"}
+        new_checkout_notification GET    /checkout_notifications/new(.:format)             {:action=>"new", :controller=>"checkout_notifications"}
+       edit_checkout_notification GET    /checkout_notifications/:id/edit(.:format)        {:action=>"edit", :controller=>"checkout_notifications"}
+            checkout_notification GET    /checkout_notifications/:id(.:format)             {:action=>"show", :controller=>"checkout_notifications"}
+                                  PUT    /checkout_notifications/:id(.:format)             {:action=>"update", :controller=>"checkout_notifications"}
+                                  DELETE /checkout_notifications/:id(.:format)             {:action=>"destroy", :controller=>"checkout_notifications"}
+                  password_resets GET    /password_resets(.:format)                        {:action=>"index", :controller=>"password_resets"}
+                                  POST   /password_resets(.:format)                        {:action=>"create", :controller=>"password_resets"}
+               new_password_reset GET    /password_resets/new(.:format)                    {:action=>"new", :controller=>"password_resets"}
+              edit_password_reset GET    /password_resets/:id/edit(.:format)               {:action=>"edit", :controller=>"password_resets"}
+                   password_reset GET    /password_resets/:id(.:format)                    {:action=>"show", :controller=>"password_resets"}
+                                  PUT    /password_resets/:id(.:format)                    {:action=>"update", :controller=>"password_resets"}
+                                  DELETE /password_resets/:id(.:format)                    {:action=>"destroy", :controller=>"password_resets"}
+            change_theme_settings GET    /theme_settings/change(.:format)                  {:action=>"change", :controller=>"theme_settings"}
+                   theme_settings GET    /theme_settings(.:format)                         {:action=>"index", :controller=>"theme_settings"}
+                                  POST   /theme_settings(.:format)                         {:action=>"create", :controller=>"theme_settings"}
+                new_theme_setting GET    /theme_settings/new(.:format)                     {:action=>"new", :controller=>"theme_settings"}
+               edit_theme_setting GET    /theme_settings/:id/edit(.:format)                {:action=>"edit", :controller=>"theme_settings"}
+                    theme_setting GET    /theme_settings/:id(.:format)                     {:action=>"show", :controller=>"theme_settings"}
+                                  PUT    /theme_settings/:id(.:format)                     {:action=>"update", :controller=>"theme_settings"}
+                                  DELETE /theme_settings/:id(.:format)                     {:action=>"destroy", :controller=>"theme_settings"}
+                theme_theme_pages GET    /themes/:theme_id/theme_pages(.:format)           {:action=>"index", :controller=>"theme_pages"}
+                                  POST   /themes/:theme_id/theme_pages(.:format)           {:action=>"create", :controller=>"theme_pages"}
+             new_theme_theme_page GET    /themes/:theme_id/theme_pages/new(.:format)       {:action=>"new", :controller=>"theme_pages"}
+            edit_theme_theme_page GET    /themes/:theme_id/theme_pages/:id/edit(.:format)  {:action=>"edit", :controller=>"theme_pages"}
+                 theme_theme_page GET    /themes/:theme_id/theme_pages/:id(.:format)       {:action=>"show", :controller=>"theme_pages"}
+                                  PUT    /themes/:theme_id/theme_pages/:id(.:format)       {:action=>"update", :controller=>"theme_pages"}
+                                  DELETE /themes/:theme_id/theme_pages/:id(.:format)       {:action=>"destroy", :controller=>"theme_pages"}
+                           themes GET    /themes(.:format)                                 {:action=>"index", :controller=>"themes"}
+                                  POST   /themes(.:format)                                 {:action=>"create", :controller=>"themes"}
+                        new_theme GET    /themes/new(.:format)                             {:action=>"new", :controller=>"themes"}
+                       edit_theme GET    /themes/:id/edit(.:format)                        {:action=>"edit", :controller=>"themes"}
+                            theme GET    /themes/:id(.:format)                             {:action=>"show", :controller=>"themes"}
+                                  PUT    /themes/:id(.:format)                             {:action=>"update", :controller=>"themes"}
+                                  DELETE /themes/:id(.:format)                             {:action=>"destroy", :controller=>"themes"}
+                       shop_pages GET    /shop_pages(.:format)                             {:action=>"index", :controller=>"shop_pages"}
+                                  POST   /shop_pages(.:format)                             {:action=>"create", :controller=>"shop_pages"}
+                    new_shop_page GET    /shop_pages/new(.:format)                         {:action=>"new", :controller=>"shop_pages"}
+                   edit_shop_page GET    /shop_pages/:id/edit(.:format)                    {:action=>"edit", :controller=>"shop_pages"}
+                        shop_page GET    /shop_pages/:id(.:format)                         {:action=>"show", :controller=>"shop_pages"}
+                                  PUT    /shop_pages/:id(.:format)                         {:action=>"update", :controller=>"shop_pages"}
+                                  DELETE /shop_pages/:id(.:format)                         {:action=>"destroy", :controller=>"shop_pages"}
+               subscription_plans GET    /subscription_plans(.:format)                     {:action=>"index", :controller=>"subscription_plans"}
+                                  POST   /subscription_plans(.:format)                     {:action=>"create", :controller=>"subscription_plans"}
+            new_subscription_plan GET    /subscription_plans/new(.:format)                 {:action=>"new", :controller=>"subscription_plans"}
+           edit_subscription_plan GET    /subscription_plans/:id/edit(.:format)            {:action=>"edit", :controller=>"subscription_plans"}
+                subscription_plan GET    /subscription_plans/:id(.:format)                 {:action=>"show", :controller=>"subscription_plans"}
+                                  PUT    /subscription_plans/:id(.:format)                 {:action=>"update", :controller=>"subscription_plans"}
+                                  DELETE /subscription_plans/:id(.:format)                 {:action=>"destroy", :controller=>"subscription_plans"}
+  create_using_csv_shipping_plans POST   /shipping_plans/create_using_csv(.:format)        {:action=>"create_using_csv", :controller=>"shipping_plans"}
+                   shipping_plans GET    /shipping_plans(.:format)                         {:action=>"index", :controller=>"shipping_plans"}
+                                  POST   /shipping_plans(.:format)                         {:action=>"create", :controller=>"shipping_plans"}
+                new_shipping_plan GET    /shipping_plans/new(.:format)                     {:action=>"new", :controller=>"shipping_plans"}
+               edit_shipping_plan GET    /shipping_plans/:id/edit(.:format)                {:action=>"edit", :controller=>"shipping_plans"}
+                    shipping_plan GET    /shipping_plans/:id(.:format)                     {:action=>"show", :controller=>"shipping_plans"}
+                                  PUT    /shipping_plans/:id(.:format)                     {:action=>"update", :controller=>"shipping_plans"}
+                                  DELETE /shipping_plans/:id(.:format)                     {:action=>"destroy", :controller=>"shipping_plans"}
+              shop_shop_histories GET    /shops/:shop_id/shop_histories(.:format)          {:action=>"index", :controller=>"shop_histories"}
+                                  POST   /shops/:shop_id/shop_histories(.:format)          {:action=>"create", :controller=>"shop_histories"}
+            new_shop_shop_history GET    /shops/:shop_id/shop_histories/new(.:format)      {:action=>"new", :controller=>"shop_histories"}
+           edit_shop_shop_history GET    /shops/:shop_id/shop_histories/:id/edit(.:format) {:action=>"edit", :controller=>"shop_histories"}
+                shop_shop_history GET    /shops/:shop_id/shop_histories/:id(.:format)      {:action=>"show", :controller=>"shop_histories"}
+                                  PUT    /shops/:shop_id/shop_histories/:id(.:format)      {:action=>"update", :controller=>"shop_histories"}
+                                  DELETE /shops/:shop_id/shop_histories/:id(.:format)      {:action=>"destroy", :controller=>"shop_histories"}
+                            shops GET    /shops(.:format)                                  {:action=>"index", :controller=>"shops"}
+                                  POST   /shops(.:format)                                  {:action=>"create", :controller=>"shops"}
+                         new_shop GET    /shops/new(.:format)                              {:action=>"new", :controller=>"shops"}
+              update_payment_shop PUT    /shops/:id/update_payment(.:format)               {:action=>"update_payment", :controller=>"shops"}
+                        edit_shop GET    /shops/:id/edit(.:format)                         {:action=>"edit", :controller=>"shops"}
+                        help_shop GET    /shops/:id/help(.:format)                         {:action=>"help", :controller=>"shops"}
+                      themes_shop GET    /shops/:id/themes(.:format)                       {:action=>"themes", :controller=>"shops"}
+                 switch_shop_shop GET    /shops/:id/switch_shop(.:format)                  {:action=>"switch_shop", :controller=>"shops"}
+                switch_theme_shop GET    /shops/:id/switch_theme(.:format)                 {:action=>"switch_theme", :controller=>"shops"}
+                     payment_shop GET    /shops/:id/payment(.:format)                      {:action=>"payment", :controller=>"shops"}
+                             shop GET    /shops/:id(.:format)                              {:action=>"show", :controller=>"shops"}
+                                  PUT    /shops/:id(.:format)                              {:action=>"update", :controller=>"shops"}
+                                  DELETE /shops/:id(.:format)                              {:action=>"destroy", :controller=>"shops"}
+        show_front_facebook_pages POST   /facebook_pages/show_front(.:format)              {:action=>"show_front", :controller=>"facebook_pages"}
+         show_page_facebook_pages POST   /facebook_pages/show_page(.:format)               {:action=>"show_page", :controller=>"facebook_pages"}
+calculate_shipping_facebook_pages POST   /facebook_pages/calculate_shipping(.:format)      {:action=>"calculate_shipping", :controller=>"facebook_pages"}
+       total_price_facebook_pages POST   /facebook_pages/total_price(.:format)             {:action=>"total_price", :controller=>"facebook_pages"}
+             close_facebook_pages GET    /facebook_pages/close(.:format)                   {:action=>"close", :controller=>"facebook_pages"}
+                   facebook_pages GET    /facebook_pages(.:format)                         {:action=>"index", :controller=>"facebook_pages"}
+                                  POST   /facebook_pages(.:format)                         {:action=>"create", :controller=>"facebook_pages"}
+                new_facebook_page GET    /facebook_pages/new(.:format)                     {:action=>"new", :controller=>"facebook_pages"}
+               edit_facebook_page GET    /facebook_pages/:id/edit(.:format)                {:action=>"edit", :controller=>"facebook_pages"}
+                    facebook_page GET    /facebook_pages/:id(.:format)                     {:action=>"show", :controller=>"facebook_pages"}
+                                  PUT    /facebook_pages/:id(.:format)                     {:action=>"update", :controller=>"facebook_pages"}
+                                  DELETE /facebook_pages/:id(.:format)                     {:action=>"destroy", :controller=>"facebook_pages"}
+                             root        /                                                 {:action=>"home", :controller=>"pages"}
+                                         /:controller/:action/:id                          
+                                         /:controller/:action/:id(.:format)                

@@ -1,0 +1,20 @@
+ Parameters: {
+"fb_sig_app_id"=>"195708459256", 
+"action"=>"show_page", 
+"page_id"=>"2", 
+"fb_sig_locale"=>"en_US", 
+"fb_sig_in_new_facebook"=>"1", 
+"fb_sig"=>"804c93b95fee59c9b6c8429b618b7561", 
+"fb_sig_profile"=>"238502048416", 
+"fb_sig_added"=>"1", 
+"fb_sig_expires"=>"1280386800", 
+"fb_sig_session_key"=>"2.H8FE4fAlx0srqXPjII9N6Q__.3600.1280386800-1373083302", 
+"fb_sig_ext_perms"=>"user_birthday,user_religion_politics,user_relationships,user_relationship_details,user_hometown,user_location,user_likes,user_activities,user_interests,user_education_history,user_work_history,user_online_presence,user_website,user_groups,user_events,user_photos,user_videos,user_photo_video_tags,user_notes,user_about_me,user_status,friends_birthday,friends_religion_politics,friends_relationships,friends_relationship_details,friends_hometown,friends_location,friends_likes,friends_activities,friends_interests,friends_education_history,friends_work_history,friends_online_presence,friends_website,friends_groups,friends_events,friends_photos,friends_videos,friends_photo_video_tags,friends_notes,friends_about_me,friends_status", 
+"fb_sig_country"=>"id", 
+"controller"=>"facebook_pages", 
+"fb_sig_is_ajax"=>"1", 
+"fb_sig_api_key"=>"876efe1f373a78a2ba886ebe9e60bdd3", 
+"fb_sig_time"=>"1280379877.667", 
+"fb_sig_profile_update_time"=>"1270488834", 
+"fb_sig_user"=>"1373083302"
+}

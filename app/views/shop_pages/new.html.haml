@@ -1,0 +1,18 @@
+- content_for :title do
+  Moluko - Create new custom page
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Store
+    %li &raquo;
+    %li= link_to "Theme", themes_shop_path(current_shop)
+    %li &raquo;
+    %li= link_to "Customized Theme", shop_pages_path
+    %li &raquo;
+    %li Add New Custom Page
+
+.content
+  %h2 Add New Custom Page
+  = render "form", :button_title => "Save"

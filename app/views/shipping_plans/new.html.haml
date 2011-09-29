@@ -1,0 +1,27 @@
+- content_for :title do
+  Moluko - Add New Shipping Rate
+
+- content_for :body_bottom do
+  :javascript
+    $(":input:visible:enabled:first").focus();
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li= link_to "Shipping Rates", shipping_plans_path
+    %li &raquo;
+    %li Add New Rate
+
+.content
+  %h2 Add New Rate for Shipping Destination
+  =# render 'form', { :button_title => 'Add' }
+  #csv
+    = form_for :csv, :url => create_using_csv_shipping_plans_path, :html => { :multipart => true } do |f|
+      = f.label :file_upload, "Upload your Shipping CSV file:"
+      = f.file_field :file, :class => "small-input"
+      %span{:style => "clear: left"}
+      %span.button_ok
+        = f.submit "Upload"
+      - link_to shipping_plans_path, :class => "button_cancel" do
+        %span Cancel

@@ -1,0 +1,22 @@
+- content_for :title do
+  Moluko - Get Started
+
+.content
+  %h1 Welcome to Moluko. Complete these steps to setup your Facebook Store!
+
+  %table.getstarted
+    %tbody
+      %tr
+        %td 1
+        %td.strike= link_to "Sign up an account with Moluko", "javascript:none"
+        %td.completed completed!
+      %tr
+        %td 2
+        =raw check_product(link_to("Add products to your catalogue", new_product_path))
+      %tr
+        %td 3
+        =raw check_payment(link_to("Provide Paypal details to receive payments from buyers", payment_shop_path(current_shop)))
+      %tr
+        %td 4
+        =raw check_facebook(link_to("Embed Moluko plugin to your Facebook Page", APP_CONFIG[:fb_app_profile_page_url], :target => '_blank'))
+  %div{:style => "clear: left"}

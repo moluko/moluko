@@ -1,0 +1,24 @@
+Processing FacebookPagesController#index (for 69.63.181.250 at 2010-10-20 04:23:41) [GET]
+Parameters: {
+  "fb_sig_in_profile_tab"=>"1",
+    "fb_sig_profile_user"=>"238502048416",
+    "fb_sig_is_admin"=>"1",
+    "fb_sig_app_id"=>"143063219056876",
+    "fb_sig_type"=>"LOCAL_BUSINESS",
+    "fb_sig_page_added"=>"1",
+    "action"=>"index",
+    "fb_sig_profile_id"=>"238502048416",
+    "fb_sig_request_method"=>"GET",
+    "fb_sig_locale"=>"en_US",
+    "fb_sig_page_id"=>"238502048416",
+    "_method"=>"GET",
+    "fb_sig_in_canvas"=>"1",
+    "fb_sig_in_new_facebook"=>"1",
+    "fb_sig"=>"060623b2b8ebc3c96bb620a979034c5c",
+    "fb_sig_added"=>"0",
+    "fb_sig_country"=>"id",
+    "controller"=>"facebook_pages",
+    "fb_sig_is_fan"=>"1",
+    "fb_sig_api_key"=>"faed83e25d7a178ee57d7b3eca8c410f",
+    "fb_sig_time"=>"1287548486.7787"
+}

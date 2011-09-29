@@ -1,0 +1,31 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+  %head
+    %meta{'http-equiv' => 'content-type', 'content' => 'text/html;charset=UTF-8'}/
+    %title
+      = yield :title
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico", :type => "image/ico" }
+    = stylesheet_link_tag "public_layout.css"
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
+    = yield :head_bottom
+    - if URI::parse(request.url).host == 'moluko.com'
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-10332489-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+  %body
+    #container
+      #header
+        %div.logo
+          = link_to image_tag("logo.png", :alt => "Moluko logo"), root_path
+      #main
+        /[if lt IE 7]
+          = render 'layouts/ie6nomore'
+        = yield
+    = yield :body_bottom

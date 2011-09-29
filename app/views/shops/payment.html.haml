@@ -1,0 +1,34 @@
+- content_for :title do
+  Moluko - Payment
+
+- content_for :body_bottom do
+  :javascript
+    $(":input:visible:enabled:first").focus();
+
+.breadcrumb
+  %ul
+    %li= link_to current_shop.name, shops_path
+    %li &raquo;
+    %li Payment
+
+.content
+  %h2 Setup Paypal Details to Receive Payments from Buyers
+  %div
+    %p Provider:
+    %img{:src => "/images/admin/paypal.gif"}
+    %p{:style => "font-style: italic; font-size: 65%"}
+      Note: we are working on supporting other providers. Email us at
+      = mail_to "questions@moluko.com"
+      to ask about your needs.
+      = form_for current_shop, :url => update_payment_shop_path(:current), :method => :put do |f|
+        = f.label :paypal_email, "Paypal email:"
+        = f.text_field :paypal_email, :class => "small-input"
+        = f.label :paypal_currency, "Accepted currency:"
+        = f.select :paypal_currency, Shop::PAYPAL_CURRENCY.map{|x,y| ["#{y[1]} (#{y[0]})", x] }, :class => "small-input"
+        %br/
+        = link_to_function 'Save', '$(this).parent().submit();', :class => 'button'
+        - unless flash[:error].nil?
+          .info.error= flash[:error]
+        - unless flash[:info].nil?
+          .info.success= flash[:info]
+

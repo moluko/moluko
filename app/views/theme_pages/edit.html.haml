@@ -1,0 +1,27 @@
+- content_for :title do
+  Moluko - Edit
+  = h @theme_page.name
+
+.breadcrumb
+  %ul
+    %li Administrator
+    %li &raquo;
+    %li= link_to "Predefined Theme", themes_path
+    %li &raquo;
+    %li
+      = @theme_page.theme.name
+      theme
+    %li &raquo;
+    %li= link_to "Pages", @theme_page.theme
+    %li &raquo;
+    %li
+      Edit
+      = @theme_page.name
+      page
+
+.content
+  %h2
+    Edit
+    = h @theme_page.name
+    Page
+    = render 'form', { :button_title => 'Update' }

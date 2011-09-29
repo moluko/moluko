@@ -1,0 +1,7 @@
+Country Code (ISO3);Region;Zip;Order From;Order To;Price;Type
+*;*;*;0;50;6;US Postal Service
+*;*;*;51;100;12;US Postal Service
+*;*;*;101;9999;18;US Postal Service
+USA;*;*;0;50;3;US Postal Service
+USA;*;*;51;100;6;US Postal Service
+USA;*;*;101;9999;9;US Postal Service

@@ -1,0 +1,2 @@
+module SubscriptionNotificationsHelper
+end

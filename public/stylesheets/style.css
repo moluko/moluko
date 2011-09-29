@@ -1,0 +1,119 @@
+#home {
+  color: white;
+  padding-top: 35px; }
+  #home h2 {
+    padding-top: 10px; }
+  #home h5 {
+    font-size: 110%;
+    padding-top: 20px; }
+  #home .assets-container {
+    padding: 10px 145px; }
+  #home .assets {
+    background-color: black;
+    height: 385px; }
+  #home .action-container {
+    height: 55px;
+    padding-left: 275px;
+    width: 450px; }
+    #home .action-container p {
+      float: left; }
+  #home ul.features li {
+    color: #333333;
+    font-size: 95%;
+    line-height: 1.3em;
+    list-style: inside; }
+  #home ul.benefits {
+    display: block;
+    height: 85px; }
+    #home ul.benefits li {
+      color: #333333;
+      float: left;
+      font-size: 95%;
+      line-height: 1.3em;
+      padding-right: 10px;
+      width: 300px; }
+      #home ul.benefits li span {
+        display: block;
+        font-weight: bold;
+        font-size: 95%; }
+  #home #showcase {
+    text-align: center; }
+    #home #showcase p {
+      padding: 0 0 15px 20px;
+      text-align: left; }
+
+#about {
+  color: white;
+  padding-top: 35px; }
+
+#pricing {
+  color: white;
+  padding-top: 35px; }
+  #pricing .price {
+    font-weight: bold;
+    font-size: 180%;
+    padding-top: 20px;
+    line-height: 0.5;
+    text-align: center; }
+  #pricing .bulk-discount {
+    font-size: 90%;
+    padding: 8px 0;
+    text-align: center; }
+
+.faq-wrap {
+  height: 200px;
+  padding-top: 25px; }
+  .faq-wrap span.lead {
+    display: block;
+    font-size: 130%;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-left: 3%; }
+  .faq-wrap .faq-left {
+    float: left;
+    padding-left: 3%;
+    width: 47%; }
+  .faq-wrap .faq-right {
+    float: left;
+    width: 50%; }
+  .faq-wrap ul li {
+    display: block;
+    line-height: 1.2;
+    padding: 0 15px 15px 0; }
+    .faq-wrap ul li p {
+      padding-left: 0; }
+
+.question {
+  font-weight: bold; }
+
+.about-wrap {
+  padding-left: 30px; }
+  .about-wrap span.lead {
+    display: block;
+    font-size: 130%;
+    font-weight: bold;
+    padding-bottom: 5px;
+    clear: left; }
+  .about-wrap .story {
+    width: 96%; }
+    .about-wrap .story p {
+      padding-bottom: 5px; }
+      .about-wrap .story p.question {
+        padding-bottom: 0px;
+        padding-top: 15px; }
+    .about-wrap .story .photo-wrap .photo {
+      float: left;
+      padding-right: 20px;
+      padding-bottom: 15px; }
+      .about-wrap .story .photo-wrap .photo div {
+        padding-left: 110px; }
+        .about-wrap .story .photo-wrap .photo div span a {
+          text-decoration: none; }
+      .about-wrap .story .photo-wrap .photo span.name {
+        display: block;
+        padding-top: 20px;
+        font-weight: bold; }
+        .about-wrap .story .photo-wrap .photo span.name a {
+          font-weight: normal; }
+      .about-wrap .story .photo-wrap .photo img {
+        float: left; }
